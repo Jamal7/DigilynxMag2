@@ -1,0 +1,53 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+
+?>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	setInterval(dlSetHeight,500);
+});
+
+function dlSetHeight()
+{
+	jQuery('.dl-topaste-height').height(jQuery('.dl-tocopy-height').height());
+	
+}
+</script>
+
+<div class="dl-brandpage container">
+	<div class="dl-brand-header row">
+		Featured Brands
+	</div>
+	<div class="row dl-brand-row1">
+		<a href ="<?php echo $storeURL; ?>all-products?brand_name=234">
+			<img src="<?php echo $mediaURL;?>/porto_child/brandpage/brand_feiss.jpg"/>
+		</a>
+	</div>
+
+	<div class="row dl-brand-row2">
+		<div class="col-xs-6 dl-brand-col1">
+			<a href ="<?php echo $storeURL; ?>all-products?brand_name=245">
+				<img src="<?php echo $mediaURL;?>/porto_child/brandpage/brand_kichler.png"/>
+			</a>
+		</div>
+		<div class="col-xs-3 dl-brand-col2">
+			<a href ="<?php echo $storeURL; ?>all-products?brand_name=306">
+				<img class="dl-tocopy-height" src="<?php echo $mediaURL;?>/porto_child/brandpage/brand_kuzco_lighting.png"/>
+			</a>
+		</div>
+		<div class="col-xs-3 dl-brand-col3">
+			<a href ="<?php echo $storeURL; ?>all-products?brand_name=233">
+				<img class="dl-topaste-height" src="<?php echo $mediaURL;?>/porto_child/brandpage/brand_eurofase.jpg"/>
+			</a>
+		</div>
+	</div>
+	<div class="dl-brand-footer row">
+		All Brands
+	</div>
+</div>

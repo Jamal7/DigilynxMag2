@@ -1,0 +1,116 @@
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	setInterval(function()
+	{
+		
+		jQuery("#shopping-cart-table .input-text.qty").each(function () {
+			if (this.value.match(/^[0-9]+$/) == null){
+		   		this.value=this.value.replace(/\D/g,'');
+		   	}
+		
+		});
+		//jQuery("#shopping-cart-table .input-text.qty").val( jQuery("#shopping-cart-table .input-text.qty").val().replace(/[^0-9]/g,''));
+	}, 100);
+
+	jQuery("#shopping-cart-table .input-text.qty").keypress(function (e) {
+	 //if the letter is not digit then display error and don't type anything
+		if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57))
+	    	return false;
+	    if(jQuery(e.target).val() == '0')
+	    	return false;
+	    //alert(jQuery(e.target).val());
+		
+	});
+	//dlUpdateCart();
+});
+
+
+function dlUpdateCart()
+{
+	require(['jquery', 'Magento_Checkout/js/action/get-totals','Magento_Checkout/js/action/get-payment-information','Magento_Checkout/js/model/resource-url-manager','mage/storage' , 'Magento_Checkout/js/model/quote','Magento_Checkout/js/model/shipping-save-processor'], function ($,getTotalsAction,getPaymentInformationAction,resourceUrlManager,storage,quote,shippingSaveProcessor) {
+	    // $("#submitbutton").hide();
+	    var form = $('form#form-validate');
+	    var qtyfields = $('input.qty');
+	    $('.page.messages').each(function () {
+	        var thismessage = $(this);
+	        thismessage.attr('id', 'messages');
+	    });
+
+	    form.find(qtyfields).each(function (e) {
+	        var thisfield = $(this);
+	        $(this).change(function () {
+	            console.log('change detected');
+	            form.submit();
+	        });
+
+	    });
+	    form.on('submit', function (e) {
+	        e.preventDefault();
+	        $.ajax({
+	            url: form.attr('action'),
+	            data: form.serialize(),
+	            type: 'post',
+	            success: function (res) {
+	                var parsedResponse = $.parseHTML(res);
+	                var resultPageTbody = $(parsedResponse).find('tbody.cart.item');
+	                var currentPageTbody = $('tbody.cart.item');
+	                resultPageTbody.each(function() {
+					  var resultPagePrLink = $(this).find('.product-item-details .product-item-name a').attr('href');
+					  var resultPagePrQty = $(this).find('.input-text.qty').val();
+					  var resultPagePrCost = $(this).find('.col.subtotal .price').html();
+					  console.log(resultPagePrLink);
+					  console.log(resultPagePrCost);
+
+					  
+					  currentPageTbody.each(function() {
+					  	var curPagePrLink = $(this).find('.product-item-details .product-item-name a').attr('href');
+					  	if (curPagePrLink == resultPagePrLink)
+					  	{
+					  		$(this).find('.input-text.qty').val(resultPagePrQty);
+					  		$(this).find('.col.subtotal .price').html(resultPagePrCost);	
+					  	}
+					  });
+
+					/*var deferred = $.Deferred();
+                    getTotalsAction([], deferred);
+                    getPaymentInformationAction(deferred);*/
+                    storage.get(resourceUrlManager.getUrlForCartTotals(quote), false)
+				       .done(
+				           function (response) {
+				               quote.setTotals(response);
+				               shippingSaveProcessor.saveShippingInformation(quote.shippingAddress().getType());
+				           })
+				       .fail(
+				           function (response) {
+				               //do your error handling
+				       });
+
+
+
+
+					});
+
+	                //var result = $(parsedResponse).find("#form-validate");
+
+	                //update form values by finding fro result
+	                //update total check promo,
+	                //do for manual
+	                //remove non used js dependencies
+	                //use other event handler , show rotator, check for errors in non cart page, responsive
+	                //remove shoppping cart button
+
+	                //add cart detail
+	                //$("#form-validate").replaceWith(result);
+	                //console.log(result);
+	                //location.reload();
+	            },
+	            error: function () {
+	                console.log('error');
+	            }
+	        });
+	        console.log('form submitted');
+	    });
+	});
+}
+
+</script>

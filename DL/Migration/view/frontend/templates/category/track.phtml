@@ -1,0 +1,235 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+?>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	setInterval(dlSetHeight,500);
+	
+
+});
+function dlSetHeight()
+{
+	jQuery(".dl_cl_col_m img").height(jQuery(".dl_cl_3c .dl_cl_col_r img").height());
+	jQuery('.dl_cl_sm_row').height(jQuery('.dl_cl_col_l a img').height()/4 - 3);
+	//jQuery('.dl_cl_sm_row a').css('line-height',(jQuery('.dl_cl_col_l a img').height()/4 - 3)+"px");
+	
+}
+</script>
+
+<div class="container dlclcont">
+	<div class="row dl_cl_mainrow">
+
+		<div class="col-sm-3">
+			<div class="dl-cat-bar-head">
+			Track
+			</div>
+			<div class="dl-cat-bar-subs">
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Component Track Heads</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Component Track Pendants</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Component Track Hardware</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Component Track Accessories</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Cable Heads</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Cable Pendants</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Cable Hardware</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Cable Accessories</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Moonrail Heads</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Moonrail Pendants</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Moonrail Hardware</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Moonrail Accessories</a></div>
+			</div>
+		</div>
+
+		<div class="col-sm-9 dlclcontr">
+			<div class="row dl_cl_1c">
+				<a href="<?php echo $storeURL; ?>track.html?dl-listing=yes">
+					<img src="<?php echo $mediaURL; ?>porto_child/cl/clt1.jpg"/>
+					<div style="color:black" class="dl-label-complete-side">Shop All<br>Tracks</div>
+				</a>
+			</div>
+		
+
+			<div class="dl_home_header">Fixed Track</div>
+
+		
+			<div class="row dl_cl_1c">
+				<a href="<?php echo $storeURL; ?>">
+					<img src="<?php echo $mediaURL; ?>porto_child/cl/clt2.jpg"/>
+					<div class="dl-label-complete-side">Shop All<br>Fixed Tracks</div>
+				</a>
+			</div>
+		
+
+			<div class="dl_home_header">Component Track</div>
+
+			<div class="row dl_cl_2c">
+				<div class="col-xs-3 dl_cl_col_l">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clt3.jpg"/>
+						<div class="dl-label-complete">Shop All<br>Component Track</div>
+					</a>
+				</div>
+				<div class="col-xs-9 dl_cl_col_r">
+					<div class="dl_cl_sm_row dl_cl_sm_row1">
+						<a href="<?php echo $storeURL; ?>">
+							Component Track Heads
+						</a>
+						</a>
+					</div>
+					<div class="dl_cl_sm_row dl_cl_sm_row1">
+						<a href="<?php echo $storeURL; ?>">
+							Component Track Pendants
+						</a>
+					</div>
+					<div class="dl_cl_sm_row dl_cl_sm_row1">
+						<a href="<?php echo $storeURL; ?>">		
+							Component Track Hardware
+						</a>
+					</div>
+					<div class="dl_cl_sm_row dl_cl_sm_row1">
+						<a href="<?php echo $storeURL; ?>">		
+							Component Track Accessories
+						</a>
+					</div>
+							
+				</div>
+			</div>
+
+			<div class="dl_home_header">Cable Track</div>
+
+			<div class="row dl_cl_2c">
+				<div class="col-xs-3 dl_cl_col_l">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clt4.jpg"/>
+						<div style="color:black" class="dl-label-complete">Shop All<br>Cable Track</div>
+					</a>
+				</div>
+				<div class="col-xs-9 dl_cl_col_r">
+					<div class="dl_cl_sm_row dl_cl_sm_row1">
+						<a href="<?php echo $storeURL; ?>">
+							Cable Heads
+						</a>
+					</div>
+					<div class="dl_cl_sm_row dl_cl_sm_row1">
+						<a href="<?php echo $storeURL; ?>">
+							Cable Pendants
+						</a>
+					</div>
+					<div class="dl_cl_sm_row dl_cl_sm_row1">
+						<a href="<?php echo $storeURL; ?>">		
+							Cable Hardware
+						</a>
+					</div>
+					<div class="dl_cl_sm_row dl_cl_sm_row1">
+						<a href="<?php echo $storeURL; ?>">		
+							Cable Accessories
+						</a>
+					</div>
+							
+				</div>
+			</div>
+
+			<div class="dl_home_header">Monorail Track</div>
+
+			<div class="row dl_cl_2c">
+				<div class="col-xs-3 dl_cl_col_l">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clt5.jpg"/>
+						<div class="dl-label-complete">Shop All<br>Monorail Track</div>
+					</a>
+				</div>
+				<div class="col-xs-9 dl_cl_col_r">
+					<div class="dl_cl_sm_row dl_cl_sm_row1">
+						<a href="<?php echo $storeURL; ?>">
+							Monorail Heads
+						</a>
+					</div>
+					<div class="dl_cl_sm_row dl_cl_sm_row1">
+						<a href="<?php echo $storeURL; ?>">
+							Monorail Pendants
+						</a>
+					</div>
+					<div class="dl_cl_sm_row dl_cl_sm_row1">
+						<a href="<?php echo $storeURL; ?>">		
+							Monorail Hardware
+						</a>
+					</div>
+					<div class="dl_cl_sm_row dl_cl_sm_row1">
+						<a href="<?php echo $storeURL; ?>">		
+							Moonrail Accessories
+						</a>
+					</div>
+							
+				</div>
+			</div>
+
+			<div class="dl_home_header">Track Compatibility + Components</div>
+
+			<div class="dl-p-header row">
+				When shopping track you need mutiple parts and components... except fixed track. Not always compytable across brands we suggest staying within a brand to ensure compatibility. Reach out to customer service with ny technical questions or quotes... Shop by brand.
+			</div>
+
+			<div class="row dl_cl_3c">
+				<div class="col-xs-4 dl_cl_col_l">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clt6.jpg"/>
+						<div class="dl-label-complete">Shop Track By<br>Tech Lighting</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_m">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clt6.jpg"/>
+						<div class="dl-label-complete">Shop Track By<br>Kendal Lighting</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_r">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clt6.jpg"/>
+						<div class="dl-label-complete">Shop Track By<br>Wac Lighting</div>
+					</a>
+				</div>
+			</div>
+
+
+		</div>
+
+
+
+
+
+	</div>
+</div>
+
+
+<?php
+$request = $objectManager->get('\Magento\Framework\App\Request\Http');
+if ($request->getParam('dl-listing')=='yes')
+{
+	?>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('div.columns').show();
+			
+			})
+			
+		</script>
+	<?php
+}
+else
+{
+	?>
+		<script type="text/javascript">
+		jQuery('div.category-view').show();
+			
+		</script>
+	<?php
+}
+
+
+

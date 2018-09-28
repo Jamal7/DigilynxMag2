@@ -1,0 +1,112 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+?>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	setInterval(dlSetHeight,500);
+	
+
+});
+function dlSetHeight()
+{
+	jQuery(".dl_cl_col_m img").height(jQuery(".dl_cl_3c .dl_cl_col_r img").height());
+}
+</script>
+<div class="container dlclcont">
+	<div class="row dl_cl_mainrow">
+
+		<div class="col-sm-3">
+			<div class="dl-cat-bar-head">
+			Fans
+			</div>
+			<div class="dl-cat-bar-subs">
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>fans/ceiling-fans.html">Ceiling Fans</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>fans/outdoor-fans.html">Outdoor Fans</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="#">Wall Fans (Coming Soon)</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="#">Portable Fans (Coming Soon)</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>fans/fan-parts-accessories.html">Parts &amp; Accessories</a></div>
+			</div>
+		</div>
+
+		<div class="col-sm-9 dlclcontr">
+
+		<div class="row dl_cl_1c">
+				<a href="<?php echo $storeURL; ?>fans.html?dl-listing=yes">
+					<img src="<?php echo $mediaURL; ?>porto_child/cl/clf1.jpg"/>
+					<div class="dl-label-complete">Shop All<br>Fans</div>
+				</a>
+			</div>
+
+			<div class="row dl_cl_2c">
+				<div class="col-xs-6 dl_cl_col_l">
+					<a href="<?php echo $storeURL; ?>fans/ceiling-fans.html">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clf2.jpg"/>
+						<div class="dl-label">Shop Ceiling Fans</div>
+					</a>
+				</div>
+				<div class="col-xs-6 dl_cl_col_r">
+					<a href="<?php echo $storeURL; ?>fans/outdoor-fans.html">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clf3.jpg"/>
+						<div class="dl-label">Shop Outdoor Fans</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="row dl_cl_3c">
+				<div class="col-xs-4 dl_cl_col_l">
+					<a href="#">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clf4.jpg"/>
+						<div class="dl-label">Shop Wall Fans (Coming Soon)</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_m">
+					<a href="#">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clf5.jpg"/>
+						<div class="dl-label">Shop Portable Fans (Coming Soon)</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_r">
+					<a href="<?php echo $storeURL; ?>fans/fan-parts-accessories.html">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clf6.jpg"/>
+						<div class="dl-label">Shop Parts &amp; Accessories</div>
+					</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<?php
+$request = $objectManager->get('\Magento\Framework\App\Request\Http');
+if ($request->getParam('dl-listing')=='yes')
+{
+	?>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('div.columns').show();
+			
+			})
+			
+		</script>
+	<?php
+}
+else
+{
+	?>
+		<script type="text/javascript">
+		jQuery('div.category-view').show();
+			
+		</script>
+	<?php
+}
+
+
+

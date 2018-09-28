@@ -1,0 +1,94 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+/*
+Rename images
+Add hidden empty images for all links, load main image
+when top hover load all images
+when hover a paritcular link, call a fuction to change image and dl-lebel lin
+*/
+  
+  
+?>
+<img class="rm_ou" style="display:none;" src="<?php echo $mediaURL; ?>porto_child/menu/rm_ou.jpg"/>
+<img class="rm_ou_chandeliers" style="display:none;" src=""/>
+<img class="rm_ou_pendants" style="display:none;" src=""/>
+<img class="rm_ou_wall" style="display:none;" src=""/>
+<img class="rm_ou_ceiling" style="display:none;" src=""/>
+<img class="rm_ou_landscape" style="display:none;" src=""/>
+<img class="rm_ou_post" style="display:none;" src=""/>
+<img class="rm_ou_posts" style="display:none;" src=""/>
+<img class="rm_ou_pier" style="display:none;" src=""/>
+
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		window.dl_rm_ou_hovered=0;
+		jQuery('.sw-megamenu.navigation li.level0:eq(3)').hover(function(){
+			// hovered in
+			if(window.dl_rm_ou_hovered == 0)
+			{
+				jQuery('.rm_ou_chandeliers').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_ou_chandeliers.jpg');
+				jQuery('.rm_ou_pendants').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_ou_pendants.jpg');
+				jQuery('.rm_ou_wall').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_ou_wall.jpg');
+				jQuery('.rm_ou_ceiling').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_ou_ceiling.jpg');
+				jQuery('.rm_ou_landscape').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_ou_landscape.jpg');
+				jQuery('.rm_ou_post').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_ou_post.jpg');
+				jQuery('.rm_ou_posts').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_ou_posts.jpg');
+				jQuery('.rm_ou_pier').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_ou_pier.jpg');
+				window.dl_rm_ou_hovered = 1;
+			}
+			dlou_right_menu_set('Outdoor','.rm_ou','white',jQuery('.sw-megamenu.navigation li.level0:eq(3) ul.subchildmenu li a'),'600');
+		},function(){
+			// hovered out
+		});
+		
+		function dlou_hover(categoryText,categoryClass,color,handle,fontWeight)
+		{
+			if(jQuery(handle).html().indexOf(categoryText) !== -1)
+			{	
+				dlou_right_menu_set(categoryText,categoryClass,color,handle,fontWeight);
+			}
+		}
+		function dlou_right_menu_set(categoryText,categoryClass,color,handle,fontWeight)
+		{
+			jQuery('.sw-megamenu.navigation li.level0:eq(3) .dl-menu-right-normal img').attr('src',jQuery(categoryClass).attr('src'));
+			jQuery('.sw-megamenu.navigation li.level0:eq(3) .dl-menu-right-normal .dl-label-menu').html(categoryText);
+			jQuery('.sw-megamenu.navigation li.level0:eq(3) .dl-menu-right-normal .dl-label-menu.dl-label').css('color',color);
+			jQuery(handle).css('font-weight',fontWeight);
+		}
+		jQuery('.sw-megamenu.navigation li.level0:eq(3) ul.subchildmenu li a').hover(function(){
+			// hovered in
+				dlou_hover('Outdoor Chandeliers','.rm_ou_chandeliers','white',this,"700");
+				dlou_hover('Outdoor Pendants','.rm_ou_pendants','white',this,"700");
+				dlou_hover('Outdoor Wall Lights','.rm_ou_wall','black',this,"700");
+				dlou_hover('Outdoor Ceiling Lights','.rm_ou_ceiling','white',this,"700");
+				dlou_hover('Landscape Lighting','.rm_ou_landscape','white',this,"700");
+				dlou_hover('Post Lights','.rm_ou_post','white',this,"700");
+				dlou_hover('Posts','.rm_ou_posts','white',this,"700");
+				dlou_hover('Pier Mounts','.rm_ou_pier','white',this,"700");
+
+			
+				
+		},function(){
+			// hovered out
+			//dlou_right_menu_set('Outdoor','.rm_ou','white',jQuery('.sw-megamenu.navigation li.level0:eq(3) ul.subchildmenu li a'),'600');
+			jQuery('.sw-megamenu.navigation li.level0:eq(3) ul.subchildmenu li a').css('font-weight','600');
+
+		});
+
+	})
+</script>
+
+
+
+
+<div class="dl-menu-right-normal">
+	<img src="<?php echo $mediaURL; ?>porto_child/menu/rm_ou.jpg" alt="" />
+	<div style="color:white;" class="dl-label dl-label-menu">Outdoor</div>
+</div>

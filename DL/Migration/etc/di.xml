@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+   <type name="Magento\Framework\Console\CommandList">
+       <arguments>
+           <argument name="commands" xsi:type="array">
+               <item name="digilynxSaveProduct" xsi:type="object">DL\Migration\Console\Command\SaveProductCommand</item>
+           </argument>
+       </arguments>
+   </type>
+   <type name="Magento\OfflineShipping\Model\Carrier\Flatrate">
+        <plugin name="disable-tablerate" type="DL\Migration\Model\Carrier\Flatrate" sortOrder="1" />
+    </type>
+    <type name="Magento\Review\Block\Adminhtml\Edit\Form">
+        <plugin name="modify_review_edit_form" type="DL\Migration\Plugin\Magento\Review\Block\Adminhtml\Edit\Form" />
+    </type> 
+    <type name="Magento\Review\Block\Adminhtml\Add\Form">
+        <plugin name="modify_review_add_form" type="DL\Migration\Plugin\Magento\Review\Block\Adminhtml\Add\Form" />
+    </type>   
+</config>

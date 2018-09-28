@@ -1,0 +1,110 @@
+<div class="dl-specification-tab-detail">
+
+<?php
+$prd = $block->getProduct();
+$attributeSetId = $prd->getAttributeSetId();
+
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$config  = $objectManager->get('Magento\Catalog\Model\Config');
+$attributeGroupId = $config->getAttributeGroupId($attributeSetId, 'Migration_Custom');
+
+$productAttributes=$prd->getAttributes();
+foreach ($productAttributes as $attribute) {
+	if ($attribute->isInGroup($attributeSetId, $attributeGroupId)) {
+
+		if ($attribute->getAttributeCode() == 'status' || $attribute->getAttributeCode() == 'brand_code' || $attribute->getAttributeCode() == 'cost_price' || $attribute->getAttributeCode() == 'tax_class_id' || $attribute->getAttributeCode() == 'bulb_included_2' || $attribute->getAttributeCode() == 'bulb_number_2' || $attribute->getAttributeCode() == 'bulb_type_2' || $attribute->getAttributeCode() == 'bulb_wattage_2' )
+		{
+			continue;
+		}
+
+		if ($attribute->getAttributeCode() == 'style' && $attribute->getFrontend()->getValue($prd) == 'No')
+			continue;
+
+
+		if ($attribute->getFrontend()->getValue($prd) == '' || $attribute->getFrontend()->getValue($prd) == '0')
+			continue;
+
+
+
+
+		echo '<div class="dl-specification-heading">'.$attribute->getFrontendLabel().'</div><div class="dl-specification-value">'.$attribute->getFrontend()->getValue($prd).'</div>';
+			
+        //echo $attribute->getFrontendLabel().' : '.$attribute->getFrontend()->getValue($prd).' : '.$attribute->getAttributeCode().'<br />';
+
+	}
+}
+
+
+?>
+
+</div>
+
+
+<!--
+<div class="dl-brand-heading">
+		The Arramore Collection By Feiss
+	</div>
+	<div class="dl-specification-value">
+		Inspired by the intricate scroll work of a garden gate, the Arramore collection’s modern silhouette is enhanced by integrated LED halo rings grazing down the delicate pattern of the 
+pendants. The two wall sconces feature advanced, warm-on-dim LED technology that warms in color when dimmed, going from 2700K to 2200K. Damp/Wet rated for use in outdoor 
+living spaces, the Arramore is equally well suited for beautifully appointed indoor spaces as well.  Finished in Dark Weathered Zinc, the Arramore collection offers a 1-light outdoor 
+mini-pendant, a 1-light outdoor pendant, a 2-light two-tier outdoor pendant, and two sizes of 1-light outdoor wall sconces. Wall sconces are Dark Sky compliant.
+	</div>
+
+	<div class="dl-specification-heading">
+	Dimensions:
+	</div>
+	<div class="dl-specification-value">
+	D 19 H: 9
+	</div>
+
+	<div class="dl-specification-heading">
+	Dimming Range:
+	</div>
+	<div class="dl-specification-value">
+	10-100%
+	</div>
+
+	<div class="dl-specification-heading">
+	Diffuser
+	</div>
+	<div class="dl-specification-value">
+	Acrylic White
+	</div>
+
+	<div class="dl-specification-heading">
+	Lamping
+	</div>
+	<div class="dl-specification-value">
+	jnjkn knkjnk nkjn njkn kjknkjnkn gvgcv gcfvg <br>
+	hbjhbb kbkj hbkjb jjkn nlknk lnkln knklnl
+	</div>
+
+	<div class="dl-specification-heading">
+	Total Height:
+	</div>
+	<div class="dl-specification-value">
+	66 1/2'
+	</div>
+
+	<div class="dl-specification-heading">
+	Canopy:
+	</div>
+	<div class="dl-specification-value">
+	Height:9 Diameter:10	
+	<br><br>
+	Supplied with 180 of wire
+	</div>
+
+	<div class="dl-specification-heading">
+	Downloads
+	</div>
+	<div class="dl-specification-value">
+	<a>Download 1</a><br>
+	<a>Download 1</a><br>
+	<a>Download 1</a><br>
+	<a>Download 1</a><br>
+	<a>Download 1</a>
+	</div>
+	-->

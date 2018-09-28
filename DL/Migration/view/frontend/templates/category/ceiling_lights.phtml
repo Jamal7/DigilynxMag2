@@ -1,0 +1,119 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+?>
+<div class="container">
+
+<div class="row dl_clcl_mainrow">
+	<div class="col-sm-3">
+		<div class="dl-cat-bar-head">
+			Ceiling
+		</div>
+		<div class="dl-cat-bar-subs">
+			<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>ceiling/semi-flush-mounts.html">Semi Flush Mounts</a></div>
+			<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>ceiling/flush-mounts.html">Flush Mounts</a></div>
+			<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>ceiling/chandeliers.html">Chandeliers</a></div>
+			<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>ceiling/pendants.html">Pendants</a></div>
+			<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>ceiling/mini-pendants.html">Mini Pendants</a></div>
+			<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>ceiling/linear-suspensions.html">Linear Suspensions</a></div>
+		</div>
+
+	</div>
+	<div class="col-sm-9">
+		<div class="dl_clcl_a">
+			<div class="row dl_clcl_rowa">
+				<a href="<?php echo $storeURL; ?>ceiling.html?dl-listing=yes">
+				<img src="<?php echo $mediaURL; ?>/porto_child/cl/clcl1.jpg"/>
+				<div class="dl-label-complete">Shop All<br>Ceiling Lights</div>
+				</a>
+			</div>
+		</div>
+
+		<div class="dl_clcl_b">
+			<div class="dl_home_header">Close-To-Ceiling</div>
+			<div class="row dl_clcl_rowb">
+				<div class="col-xs-6 dl_clcl_col1">
+					<a href="<?php echo $storeURL; ?>ceiling/semi-flush-mounts.html">
+					<img src="<?php echo $mediaURL; ?>/porto_child/cl/clcl2.jpg"/>
+					<div class="dl-label">Shop Semi Flush Mounts</div>
+					</a>
+				</div>
+				<div class="col-xs-6 dl_clcl_col2">
+					<a href="<?php echo $storeURL; ?>ceiling/flush-mounts.html">
+					<img src="<?php echo $mediaURL; ?>/porto_child/cl/clcl3.jpg"/>
+					<div class="dl-label">Shop Flush Mounts</div>
+					</a>
+				</div>
+			</div>	
+		</div>
+
+		<div class="dl_clcl_c">
+			<div class="dl_home_header">Suspended</div>
+			<div class="row dl_clcl_rowc1">
+				<a href="<?php echo $storeURL; ?>ceiling/chandeliers.html">
+				<img src="<?php echo $mediaURL; ?>/porto_child/cl/clcl4.jpg"/>
+				<div class="dl-label">Shop Chandeliers</div>
+				</a>
+			</div>
+
+			<div class="row dl_clcl_rowc2">
+				<div class="col-xs-6 dl_clcl_col1">
+					<a href="<?php echo $storeURL; ?>ceiling/pendants.html">
+					<img src="<?php echo $mediaURL; ?>/porto_child/cl/clcl5.jpg"/>
+					<div class="dl-label">Shop Pendants</div>
+					</a>
+				</div>
+				<div class="col-xs-6 dl_clcl_col2">
+					<a href="<?php echo $storeURL; ?>ceiling/mini-pendants.html">
+					<img src="<?php echo $mediaURL; ?>/porto_child/cl/clcl6.jpg"/>
+					<div style="color:black;" class="dl-label">Shop Mini Pendants</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="row dl_clcl_rowc3">
+				<a href="<?php echo $storeURL; ?>ceiling/linear-suspensions.html">
+				<img src="<?php echo $mediaURL; ?>/porto_child/cl/clcl7.jpg"/>
+				<div class="dl-label">Shop Linear Suspension</div>
+				</a>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+
+</div>
+
+<?php
+$request = $objectManager->get('\Magento\Framework\App\Request\Http');
+if ($request->getParam('dl-listing')=='yes')
+{
+	?>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('div.columns').show();
+			
+			})
+			
+		</script>
+	<?php
+}
+else
+{
+	?>
+		<script type="text/javascript">
+		jQuery('div.category-view').show();
+			
+		</script>
+	<?php
+}
+
+
+

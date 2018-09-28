@@ -1,0 +1,264 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$imageHelper  = $objectManager->get('\Magento\Catalog\Helper\Image');
+//$stockItemRepository  = $objectManager->get('\Magento\CatalogInventory\Api\StockRegistryInterface');
+$request  = $objectManager->get('\Magento\Framework\App\Request\Http');
+$productId = $request->getParam('id');
+if (!ctype_digit($productId))
+	die('not int');
+$product = $objectManager->create('Magento\Catalog\Model\Product')->load($productId);
+$productName = $product->getName();
+$brand = $product->getAttributeText('brand_name');
+$imageURL = $imageHelper->init($product,'category_page_list')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(303,250)->getUrl();
+$productURL = $product->getUrlModel()->getUrl($product);
+$productDesc=$product->getDescription();
+//$productStock = $stockItemRepository->getStockItem($productId);
+//$stockHTML = null;
+/*if ($productStock->getIsInStock())
+{
+	$stockHTML = "Stock Availability: In Stock";
+}
+else
+{
+	$stockHTML = "Stock Availability: Out of Stock";
+}
+*/
+
+
+
+
+
+
+//special price code
+$orgprice = $product->getPrice();
+$specialprice = $product->getSpecialPrice();
+$specialfromdate = $product->getSpecialFromDate();
+$specialtodate = $product->getSpecialToDate();
+$today = time();
+$specialPriceHTML = null;
+
+
+if(!$specialprice)
+{
+    //$dlPriceToShow = $orgprice;
+    $specialPriceHTML = 'CAD $'.number_format((float)$orgprice, 2, '.', '');
+
+}
+if ($specialprice)
+{
+    if((is_null($specialfromdate) && is_null($specialtodate)) || ($today >= strtotime($specialfromdate) && is_null($specialtodate)) || ($today <= strtotime($specialtodate) && is_null($specialfromdate)) || ($today >= strtotime($specialfromdate) && $today <= strtotime($specialtodate))){
+            //$dlPriceToShow = $specialprice;
+        $specialPriceHTML = '<span class="dl-orgprice">$'.number_format((float)$orgprice, 2, '.', '').'</span><span class="dl.specialprice"> CAD $'.number_format((float)$specialprice, 2, '.', '').'</span>';
+
+
+    }
+    else
+    {
+        //$dlPriceToShow = $orgprice;
+        $specialPriceHTML = 'CAD $'.number_format((float)$orgprice, 2, '.', '');
+    }
+}
+//Rating Code
+$_reviewFactory  = $objectManager->get('\Magento\Review\Model\ReviewFactory');
+$_storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $_storeManager->getStore()->getBaseUrl();
+$_reviewFactory->create()->getEntitySummary($product, $_storeManager->getStore()->getId());
+$_ratingSummary = $product->getRatingSummary()->getRatingSummary();
+//pass $product object as argument...
+
+$_reviewCount = $product->getRatingSummary()->getReviewsCount();
+if (!$_reviewCount)
+{
+	$_reviewCount = 0;
+}
+
+?>
+
+
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	//fill .dl-stock-row
+	var request = jQuery.ajax({
+		  url: "<?php echo $storeURL; ?>dlmigration/product/getstockhtml",
+		  method: "POST",
+		  data: { id : '<?php echo $productId; ?>' }
+		});
+	request.done(function( msg ) {
+		if (msg == 'Stock Availability: In Stock' || msg == 'Stock Availability: Out of Stock')
+			jQuery('.dl-stock-row').html(msg);
+	});
+
+
+
+})
+function dlIsNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+function dlAddToCart(btn)
+{
+	var quantityFieldValue = jQuery(btn).parents('.dl-cart-row').find('.dl-cart-col1 .qty-box input#qty.qty').val();
+	//alert(quantityFieldValue);
+	if (quantityFieldValue==0)
+	{
+		alert('Please enter quantity greater than zero');
+		return;
+	}
+	jQuery(btn).find('span').html('Adding');
+	jQuery.ajax({
+	    url: '<?php echo $storeURL; ?>dlmigration/product/addtocart',
+	    type: 'post',
+	    data: {
+	    	qty:quantityFieldValue,
+	    	id:'<?php echo $productId; ?>'
+	    },
+	    success: function( data){
+	       if (data == 'stock')
+	       {
+	       		jQuery(btn).find('span').html('Add to Cart');
+	       		alert("Product is out of stock");
+	       } else if (data=='qty')
+	       {
+	       		jQuery(btn).find('span').html('Add to Cart');
+	       		alert("The "+quantityFieldValue+" quantity of product is not in stock");
+	       }
+	       else if (data == 'ok')
+	       {
+	       		if (jQuery(window).width() < 768) {
+	       			require([
+			        'Magento_Customer/js/customer-data'
+				    ], function (customerData) {
+				        var sections = ['cart'];
+				        customerData.invalidate(sections);
+				        customerData.reload(sections, true);
+				    });
+	       			top.window.location = '<?php echo $storeURL; ?>checkout/cart';
+                   return;
+                }
+	       		//top.window.location = '<?php echo $storeURL; ?>checkout/cart';
+	       		var productName = '<?php echo $productName; ?>';
+	       		var productImageURL = '<?php echo $imageURL; ?>';
+	       		var productURL = '<?php echo $productURL; ?>';
+	       		parent.dlCalledFromChild(productName,productImageURL,productURL);
+	       		jQuery(btn).find('span').html('Add to Cart');
+	       		
+
+
+
+	       		
+
+	       		 
+	       }
+	       else
+	       {
+	       		jQuery(btn).find('span').html('Add to Cart');
+	       		alert('Could Not add to Cart:'+data);
+	       }
+	    },
+	    error: function( jqXhr, textStatus, errorThrown ){
+	    	jQuery(btn).find('span').html('Add to Cart');
+	        console.log( errorThrown );
+	        alert('Please check your network connection and try again');
+	    }
+	});
+}
+
+function dlInc(btn)
+{
+	var quantityFieldValue = jQuery(btn).parents('.dl-cart-row').find('.dl-cart-col1 .qty-box input#qty.qty').val();
+	if (quantityFieldValue == '')
+	{
+		quantityFieldValue = 0;
+	}
+	quantityFieldValue=parseInt(quantityFieldValue)+1;
+	jQuery(btn).parents('.dl-cart-row').find('.dl-cart-col1 .qty-box input#qty.qty').val(quantityFieldValue);
+
+}
+function dlDec(btn)
+{
+	var quantityFieldValue = jQuery(btn).parents('.dl-cart-row').find('.dl-cart-col1 .qty-box input#qty.qty').val();
+	if (quantityFieldValue == '')
+	{
+		quantityFieldValue = 0;
+	}
+	quantityFieldValue=quantityFieldValue-1;
+	if (quantityFieldValue <= 0)
+		quantityFieldValue = 0;
+	jQuery(btn).parents('.dl-cart-row').find('.dl-cart-col1 .qty-box input#qty.qty').val(quantityFieldValue);
+}
+
+</script>
+
+
+
+
+
+<div class="quickview-wrapper">
+	<div class="row dl-qw-row">
+		<div class="dl-qw-col-main1 col-sm-5">
+			<div class="row dl-pic-row">
+				<a target="_top" href="<?php echo $productURL; ?>"><img src="<?php echo $imageURL; ?>"/></a>
+			</div>
+			<div class="row dl-cart-row">
+				<div class="dl-cart-col1 col-sm-5">
+					<div class="qty-box">
+					    <a href="javascript:void(0)" onclick="dlDec(this)" class="qtyminus"><i class="porto-icon-minus"></i></a>
+					    <input onkeypress="return dlIsNumber(event)" type="text" name="qty" id="qty" maxlength="12" value="1" class="input-text qty"/>
+					    <a href="javascript:void(0)" onclick="dlInc(this)" class="qtyplus"><i class="porto-icon-plus"></i></a>
+					</div>
+				</div>
+				<div class="dl-cart-col2 col-sm-7">
+					<button onclick="dlAddToCart(this)" class="action tocart primary">
+			            <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+			        </button>
+				</div>
+			</div>
+			<div class="row dl-stock-row">
+				
+			</div>	
+		</div>
+		<div class="dl-qw-col-main2 col-sm-7">
+			<div class="row dl-title-row">
+			<a class="dlz_product_ttl_quickview" target="_top" href="<?php echo $productURL; ?>"><?php echo $productName; ?></a>
+			</div>
+			<div class="row dl-brand-row">
+				by <span class="dl-qw-brand"><?php echo $brand; ?></span>
+			</div>
+			<div class="row dl-price-row">
+				<?php echo $specialPriceHTML; ?>
+			</div>
+			<div class="row dl-review-row">
+				<div class="product-reviews-summary short">
+				    <div class="rating-summary">
+				        <div title="<?php echo (int)$_ratingSummary; ?>%" class="rating-result">
+				            <span style="width:<?php echo (int)$_ratingSummary; ?>%"><span><?php echo (int)$_ratingSummary; ?>%</span></span>
+				        </div>
+				    </div>
+				    <div class="reviews-actions">
+				        <?php echo __('('.$_reviewCount.')'); ?>
+				    </div>
+				</div>
+				<?php if ($_reviewCount!=0) { ?><div class="dl-see-reviews"><a target="_top" href="<?php echo $productURL."#reviews.tab"; ?>">See Reviews</a></div><?php } ?>			    
+			</div>
+			<div class="row dl-desc-row">
+				<?php echo $productDesc; ?>
+			</div>
+			<div class="row dl-prduct-detail-row">
+				<a target="_top" href="<?php echo $productURL; ?>">View Product Details</a>
+			</div>
+		</div>
+
+
+
+
+
+	</div>
+
+
+
+</div>

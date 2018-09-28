@@ -1,0 +1,8 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd" layout="1column">
+    <body>
+        <referenceContainer name="content">
+			<block class="Magento\Framework\View\Element\Template" name="cart.popup.autoopen" template="DL_Migration::cart_popup_open.phtml"/>
+			<block class="Magento\Framework\View\Element\Template" name="dl.menu.center" template="DL_Migration::menu_center.phtml"/>
+		</referenceContainer>
+    </body>
+</page>

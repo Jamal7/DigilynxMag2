@@ -1,0 +1,37 @@
+<?php
+$prd = $block->getProduct();
+$brand = $prd->getAttributeText('brand_name');
+?>
+<div class="dl-product-brand">
+by <?php echo $brand; ?>
+</div>
+<script type="text/javascript">
+	
+	jQuery(document).ready(function () {
+		setInterval(function()
+		{
+			
+			jQuery(".product-info-main .box-tocart .field.qty .control .input-text.qty").each(function () {
+				if (this.value.match(/^[0-9]+$/) == null){
+			   		this.value=this.value.replace(/\D/g,'');
+			   	}
+			   	if (parseInt(this.value) == 0)
+			   		this.value='';
+			
+			});
+			//jQuery("#shopping-cart-table .input-text.qty").val( jQuery("#shopping-cart-table .input-text.qty").val().replace(/[^0-9]/g,''));
+		}, 100);
+		jQuery(".product-info-main .box-tocart .field.qty .control .input-text.qty").keypress(function (e) {
+		 //if the letter is not digit then display error and don't type anything
+			if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57))
+		    	return false;
+		    if(jQuery(e.target).val() == '0')
+		    	return false;
+		    //alert(jQuery(e.target).val());
+			
+		});
+
+		
+
+	})
+</script>

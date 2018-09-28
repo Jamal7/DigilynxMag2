@@ -1,0 +1,150 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+?>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	setInterval(dlSetHeight,500);
+	
+
+});
+function dlSetHeight()
+{
+	jQuery(".dl_cl_col_m img").height(jQuery(".dl_cl_3c .dl_cl_col_r img").height());
+}
+</script>
+
+<div class="container dlclcont">
+	<div class="row dl_cl_mainrow">
+
+		<div class="col-sm-3">
+			<div class="dl-cat-bar-head">
+			Outdoor
+			</div>
+			<div class="dl-cat-bar-subs">
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>outdoor/outdoor-wall-lights.html">Outdoor Wall</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="#">Outdoor Ceiling (Coming Soon)</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>outdoor/outdoor-pendants.html">Outdoor Pendants</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="#">Outdoor Chandeliers (Coming Soon)</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>outdoor/landscape-lighting.html">Landscape</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>outdoor/post-lights.html">Post Lights</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>outdoor/pier-mounts.html">Pier Mounts</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>outdoor/posts.html">Posts</a></div>
+			</div>
+		</div>
+
+		<div class="col-sm-9 dlclcontr">
+
+			<div class="row dl_cl_1c">
+				<a href="<?php echo $storeURL; ?>outdoor.html?dl-listing=yes">
+					<img src="<?php echo $mediaURL; ?>porto_child/cl/clol1.jpg"/>
+					<div class="dl-label-complete">Shop All<br>Outdoor Lights</div>
+				</a>
+			</div>
+
+			<div class="row dl_cl_2c">
+				<div class="col-xs-6 dl_cl_col_l">
+					<a href="<?php echo $storeURL; ?>outdoor/outdoor-wall-lights.html">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clol2.jpg"/>
+						<div class="dl-label">Shop Outdoor Wall</div>
+					</a>
+				</div>
+				<div class="col-xs-6 dl_cl_col_r">
+					<a href="#">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clol3.jpg"/>
+						<div class="dl-label">Shop Outdoor Ceiling (Coming Soon)</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="row dl_cl_2c">
+				<div class="col-xs-6 dl_cl_col_l">
+					<a href="<?php echo $storeURL; ?>outdoor/outdoor-pendants.html">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clol4.jpg"/>
+						<div class="dl-label">Shop Outdoor Pendants</div>
+					</a>
+				</div>
+				<div class="col-xs-6 dl_cl_col_r">
+					<a href="#">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clol5.jpg"/>
+						<div class="dl-label">Shop Outdoor Chandeliers (Coming Soon)</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="row dl_cl_1c">
+				<a href="<?php echo $storeURL; ?>outdoor/landscape-lighting.html">
+					<img src="<?php echo $mediaURL; ?>porto_child/cl/clol6.jpg"/>
+					<div class="dl-label">Shop Landscape</div>
+				</a>
+			</div>
+
+			<div class="row dl_cl_3c">
+				<div class="col-xs-4 dl_cl_col_l">
+					<a href="<?php echo $storeURL; ?>outdoor/post-lights.html">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clol7.jpg"/>
+						<div class="dl-label">Shop Post Lights</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_m">
+					<a href="<?php echo $storeURL; ?>outdoor/pier-mounts.html">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clol8.jpg"/>
+						<div class="dl-label">Shop Pier Mounts</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_r">
+					<a href="<?php echo $storeURL; ?>outdoor/posts.html">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clol9.jpg"/>
+						<div class="dl-label">Shop Posts</div>
+					</a>
+				</div>
+			</div>
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+</div>
+
+
+<?php
+$request = $objectManager->get('\Magento\Framework\App\Request\Http');
+if ($request->getParam('dl-listing')=='yes')
+{
+	?>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('div.columns').show();
+			
+			})
+			
+		</script>
+	<?php
+}
+else
+{
+	?>
+		<script type="text/javascript">
+		jQuery('div.category-view').show();
+			
+		</script>
+	<?php
+}
+
+
+

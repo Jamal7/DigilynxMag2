@@ -1,0 +1,125 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+/*
+track images
+track menu
+track colors
+track css
+test
+clean all comments
+*/
+  
+  
+?>
+<img class="rm_tr" style="display:none;" src="<?php echo $mediaURL; ?>porto_child/menu/rm_tr.jpg"/>
+<img class="rm_tr_component" style="display:none;" src=""/>
+<img class="rm_tr_component_heads" style="display:none;" src=""/>
+<img class="rm_tr_component_hardware" style="display:none;" src=""/>
+<img class="rm_tr_component_acessories" style="display:none;" src=""/>
+<img class="rm_tr_component_pendants" style="display:none;" src=""/>
+<img class="rm_tr_monorail" style="display:none;" src=""/>
+<img class="rm_tr_monorail_heads" style="display:none;" src=""/>
+<img class="rm_tr_monorail_hardware" style="display:none;" src=""/>
+<img class="rm_tr_monorail_acessories" style="display:none;" src=""/>
+<img class="rm_tr_monorail_pendants" style="display:none;" src=""/>
+<img class="rm_tr_cable" style="display:none;" src=""/>
+<img class="rm_tr_cable_heads" style="display:none;" src=""/>
+<img class="rm_tr_cable_hardware" style="display:none;" src=""/>
+<img class="rm_tr_cable_acessories" style="display:none;" src=""/>
+<img class="rm_tr_cable_pendants" style="display:none;" src=""/>
+<img class="rm_tr_fixed" style="display:none;" src=""/>
+
+
+
+
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		window.dl_rm_tr_hovered=0;
+		jQuery('.sw-megamenu.navigation li.level0:eq(7)').hover(function(){
+			// hovered in
+			if(window.dl_rm_tr_hovered == 0)
+			{
+				jQuery('.rm_tr_component').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_component.jpg');
+				jQuery('.rm_tr_component_heads').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_component_heads.jpg');
+				jQuery('.rm_tr_component_hardware').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_component_hardware.jpg');
+				jQuery('.rm_tr_component_acessories').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_component_acessories.jpg');
+				jQuery('.rm_tr_component_pendants').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_component_pendants.jpg');
+				jQuery('.rm_tr_monorail').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_monorail.jpg');
+				jQuery('.rm_tr_monorail_heads').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_monorail_heads.jpg');
+				jQuery('.rm_tr_monorail_hardware').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_monorail_hardware.jpg');
+				jQuery('.rm_tr_monorail_acessories').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_monorail_acessories.jpg');
+				jQuery('.rm_tr_monorail_pendants').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_monorail_pendants.jpg');
+				jQuery('.rm_tr_cable').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_cable.jpg');
+				jQuery('.rm_tr_cable_heads').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_cable_heads.jpg');
+				jQuery('.rm_tr_cable_hardware').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_cable_hardware.jpg');
+				jQuery('.rm_tr_cable_acessories').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_cable_acessories.jpg');
+				jQuery('.rm_tr_cable_pendants').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_cable_pendants.jpg');
+				jQuery('.rm_tr_fixed').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_tr_fixed.jpg');
+				window.dl_rm_tr_hovered = 1;
+			}
+			dltr_right_menu_set('Track','.rm_tr','black',jQuery('.sw-megamenu.navigation li.level0:eq(7) ul.subchildmenu li a'),'600');
+		},function(){
+			// hovered out
+		});
+		
+		function dltr_hover(categoryText,categoryClass,color,handle,fontWeight)
+		{
+			if(jQuery(handle).html().indexOf(categoryText) !== -1)
+			{	
+				dltr_right_menu_set(categoryText,categoryClass,color,handle,fontWeight);
+			}
+		}
+		function dltr_right_menu_set(categoryText,categoryClass,color,handle,fontWeight)
+		{
+			jQuery('.sw-megamenu.navigation li.level0:eq(7) .dl-menu-right-normal img').attr('src',jQuery(categoryClass).attr('src'));
+			jQuery('.sw-megamenu.navigation li.level0:eq(7) .dl-menu-right-normal .dl-label-menu').html(categoryText);
+			jQuery('.sw-megamenu.navigation li.level0:eq(7) .dl-menu-right-normal .dl-label-menu.dl-label').css('color',color);
+			jQuery(handle).css('font-weight',fontWeight);
+		}
+		jQuery('.sw-megamenu.navigation li.level0:eq(7) ul.subchildmenu li a').hover(function(){
+			// hovered in
+				dltr_hover('Component','.rm_tr_component','black',this,"700");
+				dltr_hover('Component Heads','.rm_tr_component_heads','black',this,"700");
+				dltr_hover('Component Hardwares','.rm_tr_component_hardware','black',this,"700");
+				dltr_hover('Component Accessories','.rm_tr_component_accessories','black',this,"700");
+				dltr_hover('Component Pendants','.rm_tr_component_pendants','black',this,"700");
+				dltr_hover('Monorail','.rm_tr_monorail','white',this,"700");
+				dltr_hover('Monorail Heads','.rm_tr_monorail_heads','black',this,"700");
+				dltr_hover('Monorail Hardwares','.rm_tr_monorail_hardware','black',this,"700");
+				dltr_hover('Monorail Accessories','.rm_tr_monorail_accessories','black',this,"700");
+				dltr_hover('Monorail Pendants','.rm_tr_monorail_pendants','black',this,"700");
+				dltr_hover('Cable','.rm_tr_cable','black',this,"700");
+				dltr_hover('Cable Heads','.rm_tr_cable_heads','white',this,"700");
+				dltr_hover('Cable Hardwares','.rm_tr_cable_hardware','black',this,"700");
+				dltr_hover('Cable Accessories','.rm_tr_cable_accessories','black',this,"700");
+				dltr_hover('Cable Pendants','.rm_tr_cable_pendants','white',this,"700");
+				dltr_hover('Fixed','.rm_tr_fixed','black',this,"700");
+				dltr_hover('Fixed Track','.rm_tr_fixed','black',this,"700");
+				
+
+			
+				
+		},function(){
+			// hovered out
+			//dlwa_right_menu_set('Wall','.rm_wa','black',jQuery('.sw-megamenu.navigation li.level0:eq(2) ul.subchildmenu li a'),'600');
+			jQuery('.sw-megamenu.navigation li.level0:eq(7) ul.subchildmenu li a').css('font-weight','600');
+
+		});
+
+	})
+</script>
+
+
+
+
+<div class="dl-menu-right-normal dl-menu-right-normal-wide">
+	<img src="<?php echo $mediaURL; ?>porto_child/menu/rm_tr.jpg" alt="" />
+	<div style="color:black;" class="dl-label dl-label-menu">Track</div>
+</div>

@@ -1,0 +1,130 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+/*
+remove links
+restyle right image
+maybe bigger exoeriment
+*/
+  
+  
+?>
+<img class="rm_bu" style="display:none;" src="<?php echo $mediaURL; ?>porto_child/menu/rm_bu.jpg"/>
+<img class="rm_bu_incandescent_a" style="display:none;" src=""/>
+<img class="rm_bu_incandescent_b" style="display:none;" src=""/>
+<img class="rm_bu_incandescent_decorative" style="display:none;" src=""/>
+<img class="rm_bu_incandescent_reflector" style="display:none;" src=""/>
+<img class="rm_bu_incandescent_speciality" style="display:none;" src=""/>
+<img class="rm_bu_halogen_a" style="display:none;" src=""/>
+<img class="rm_bu_halogen_miniature" style="display:none;" src=""/>
+<img class="rm_bu_halogen_decorative" style="display:none;" src=""/>
+<img class="rm_bu_halogen_spots" style="display:none;" src=""/>
+<img class="rm_bu_halogen_speciality" style="display:none;" src=""/>
+<img class="rm_bu_cfl_a" style="display:none;" src=""/>
+<img class="rm_bu_fluorescent_pin" style="display:none;" src=""/>
+<img class="rm_bu_fluorescent_decorative" style="display:none;" src=""/>
+<img class="rm_bu_fluorescent_reflector" style="display:none;" src=""/>
+<img class="rm_bu_fluorescent_speciality" style="display:none;" src=""/>
+<img class="rm_bu_led_a" style="display:none;" src=""/>
+<img class="rm_bu_led_b" style="display:none;" src=""/>
+<img class="rm_bu_led_decorative" style="display:none;" src=""/>
+<img class="rm_bu_led_spots" style="display:none;" src=""/>
+<img class="rm_bu_led_miniature" style="display:none;" src=""/>
+
+
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		window.dl_rm_bu_hovered=0;
+		jQuery('.sw-megamenu.navigation li.level0:eq(9)').hover(function(){
+			// hovered in
+			if(window.dl_rm_bu_hovered == 0)
+			{
+				jQuery('.rm_bu_incandescent_a').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_incandescent_a.jpg');
+				jQuery('.rm_bu_incandescent_b').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_incandescent_b.jpg');
+				jQuery('.rm_bu_incandescent_decorative').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_incandescent_decorative.jpg');
+				jQuery('.rm_bu_incandescent_reflector').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_incandescent_reflector.jpg');
+				jQuery('.rm_bu_incandescent_speciality').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_incandescent_speciality.jpg');
+				jQuery('.rm_bu_halogen_a').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_halogen_a.jpg');
+				jQuery('.rm_bu_halogen_miniature').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_halogen_miniature.jpg');
+				jQuery('.rm_bu_halogen_decorative').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_halogen_decorative.jpg');
+				jQuery('.rm_bu_halogen_spots').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_halogen_spots.jpg');
+				jQuery('.rm_bu_halogen_speciality').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_halogen_speciality.jpg');
+				jQuery('.rm_bu_cfl_a').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_cfl_a.jpg');
+				jQuery('.rm_bu_fluorescent_pin').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_fluorescent_pin.jpg');
+				jQuery('.rm_bu_fluorescent_decorative').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_fluorescent_decorative.jpg');
+				jQuery('.rm_bu_fluorescent_reflector').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_fluorescent_reflector.jpg');
+				jQuery('.rm_bu_fluorescent_speciality').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_fluorescent_speciality.jpg');
+				jQuery('.rm_bu_led_a').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_led_a.jpg');
+				jQuery('.rm_bu_led_b').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_led_b.jpg');
+				jQuery('.rm_bu_led_decorative').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_led_decorative.jpg');
+				jQuery('.rm_bu_led_spots').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_led_spots.jpg');
+				jQuery('.rm_bu_led_miniature').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_bu_led_miniature.jpg');
+				window.dl_rm_bu_hovered = 1;
+			}
+			dlbu_right_menu_set('Bulbs','.rm_bu','black',jQuery('.sw-megamenu.navigation li.level0:eq(9) ul.subchildmenu li a'),'600');
+		},function(){
+			// hovered out
+		});
+		
+		function dlbu_hover(categoryText,categoryClass,color,handle,fontWeight)
+		{
+			if(jQuery(handle).html().indexOf(categoryText) !== -1)
+			{	
+				dlbu_right_menu_set(categoryText,categoryClass,color,handle,fontWeight);
+			}
+		}
+		function dlbu_right_menu_set(categoryText,categoryClass,color,handle,fontWeight)
+		{
+			jQuery('.sw-megamenu.navigation li.level0:eq(9) .dl-menu-right-normal img').attr('src',jQuery(categoryClass).attr('src'));
+			jQuery('.sw-megamenu.navigation li.level0:eq(9) .dl-menu-right-normal .dl-label-menu').html(categoryText);
+			jQuery('.sw-megamenu.navigation li.level0:eq(9) .dl-menu-right-normal .dl-label-menu.dl-label').css('color',color);
+			jQuery(handle).css('font-weight',fontWeight);
+		}
+		jQuery('.sw-megamenu.navigation li.level0:eq(9) ul.subchildmenu li a').hover(function(){
+			// hovered in
+				dlbu_hover('Incandescent A Type','.rm_bu_incandescent_a','black',this,"700");
+				dlbu_hover('Incandescent B Type','.rm_bu_incandescent_b','black',this,"700");
+				dlbu_hover('Incandescent Decorative','.rm_bu_incandescent_decorative','black',this,"700");
+				dlbu_hover('Incandescent Reflector','.rm_bu_incandescent_reflector','black',this,"700");
+				dlbu_hover('Incandescent Speciality','.rm_bu_incandescent_speciality','black',this,"700");
+				dlbu_hover('Halogen A Type','.rm_bu_halogen_a','black',this,"700");
+				dlbu_hover('Halogen Miniature','.rm_bu_halogen_miniature','black',this,"700");
+				dlbu_hover('Halogen Decorative','.rm_bu_halogen_decorative','black',this,"700");
+				dlbu_hover('Halogen Spots &amp; Reflector','.rm_bu_halogen_spots','black',this,"700");
+				dlbu_hover('Halogen Speciality','.rm_bu_halogen_speciality','black',this,"700");
+				dlbu_hover('CFL A &amp; B Type','.rm_bu_cfl_a','black',this,"700");
+				dlbu_hover('Fluorescent Pin','.rm_bu_fluorescent_pin','black',this,"700");
+				dlbu_hover('Fluorescent Decorative','.rm_bu_fluorescent_decorative','black',this,"700");
+				dlbu_hover('Fluorescent Reflector','.rm_bu_fluorescent_reflector','black',this,"700");
+				dlbu_hover('Fluorescent Speciality','.rm_bu_fluorescent_speciality','black',this,"700");
+				dlbu_hover('LED A Type','.rm_bu_led_a','black',this,"700");
+				dlbu_hover('LED B Type','.rm_bu_led_b','black',this,"700");
+				dlbu_hover('LED Decorative','.rm_bu_led_decorative','black',this,"700");
+				dlbu_hover('LED Spots &amp; Reflector','.rm_bu_led_spots','black',this,"700");
+				dlbu_hover('LED Speciality','.rm_bu_led_miniature','black',this,"700");
+
+			
+				
+		},function(){
+			// hovered out
+			//dlwa_right_menu_set('Wall','.rm_wa','black',jQuery('.sw-megamenu.navigation li.level0:eq(2) ul.subchildmenu li a'),'600');
+			jQuery('.sw-megamenu.navigation li.level0:eq(9) ul.subchildmenu li a').css('font-weight','600');
+
+		});
+
+	})
+</script>
+
+
+
+
+<div class="dl-menu-right-normal dl-menu-right-normal-wide">
+	<img src="<?php echo $mediaURL; ?>porto_child/menu/rm_bu.jpg" alt="" />
+	<div style="color:black;" class="dl-label dl-label-menu">Bulbs</div>
+</div>

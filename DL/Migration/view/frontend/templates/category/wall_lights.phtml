@@ -1,0 +1,84 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+?>
+<div class="container dlclcont">
+	<div class="row dl_cl_mainrow">
+
+		<div class="col-sm-3">
+			<div class="dl-cat-bar-head">
+			Wall
+			</div>
+			<div class="dl-cat-bar-subs">
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>wall/sconces.html">Sconces</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="#">Swing Arm (Coming Soon)</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>wall/vanity-lights.html">Vanity Lights</a></div>
+			</div>
+		</div>
+
+		<div class="col-sm-9 dlclcontr">
+			
+			<div class="row dl_cl_1c">
+				<a href="<?php echo $storeURL; ?>wall.html?dl-listing=yes">
+					<img src="<?php echo $mediaURL; ?>porto_child/cl/clwl1.jpg"/>
+					<div style="color:#000000" class="dl-label-complete">Shop All<br>Wall Lights</div>
+				</a>
+			</div>
+
+			<div class="row dl_cl_2c">
+				<div class="col-xs-6 dl_cl_col_l">
+					<a href="<?php echo $storeURL; ?>wall/sconces.html">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clwl2.jpg"/>
+						<div class="dl-label">Shop Sconces</div>
+					</a>
+				</div>
+				<div class="col-xs-6 dl_cl_col_r">
+					<a href="#">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clwl3.jpg"/>
+						<div class="dl-label">Shop Swing Arm (Coming Soon)</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="row dl_cl_1c">
+				<a href="<?php echo $storeURL; ?>wall/vanity-lights.html">
+					<img src="<?php echo $mediaURL; ?>porto_child/cl/clwl4.jpg"/>
+					<div class="dl-label">Shop Vanity Lights</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<?php
+$request = $objectManager->get('\Magento\Framework\App\Request\Http');
+if ($request->getParam('dl-listing')=='yes')
+{
+	?>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('div.columns').show();
+			
+			})
+			
+		</script>
+	<?php
+}
+else
+{
+	?>
+		<script type="text/javascript">
+		jQuery('div.category-view').show();
+			
+		</script>
+	<?php
+}
+
+
+

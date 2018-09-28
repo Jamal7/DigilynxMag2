@@ -1,0 +1,85 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+/*
+Rename images
+Add hidden empty images for all links, load main image
+when top hover load all images
+when hover a paritcular link, call a fuction to change image and dl-lebel lin
+*/
+  
+  
+?>
+<img class="rm_fa" style="display:none;" src="<?php echo $mediaURL; ?>porto_child/menu/rm_fa.jpg"/>
+<img class="rm_fa_ceiling" style="display:none;" src=""/>
+<img class="rm_fa_walls" style="display:none;" src=""/>
+<img class="rm_fa_portable" style="display:none;" src=""/>
+<img class="rm_fa_outdoor" style="display:none;" src=""/>
+<img class="rm_fa_parts" style="display:none;" src=""/>
+
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		window.dl_rm_fa_hovered=0;
+		jQuery('.sw-megamenu.navigation li.level0:eq(5)').hover(function(){
+			// hovered in
+			if(window.dl_rm_fa_hovered == 0)
+			{
+				jQuery('.rm_fa_ceiling').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_fa_ceiling.jpg');
+				jQuery('.rm_fa_walls').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_fa_walls.jpg');
+				jQuery('.rm_fa_portable').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_fa_portable.jpg');
+				jQuery('.rm_fa_outdoor').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_fa_outdoor.jpg');
+				jQuery('.rm_fa_parts').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_fa_parts.jpg');
+				window.dl_rm_fa_hovered = 1;
+			}
+			dlfa_right_menu_set('Fans','.rm_fa','black',jQuery('.sw-megamenu.navigation li.level0:eq(5) ul.subchildmenu li a'),'600');
+		},function(){
+			// hovered out
+		});
+		
+		function dlfa_hover(categoryText,categoryClass,color,handle,fontWeight)
+		{
+			if(jQuery(handle).html().indexOf(categoryText) !== -1)
+			{	
+				dlfa_right_menu_set(categoryText,categoryClass,color,handle,fontWeight);
+			}
+		}
+		function dlfa_right_menu_set(categoryText,categoryClass,color,handle,fontWeight)
+		{
+			jQuery('.sw-megamenu.navigation li.level0:eq(5) .dl-menu-right-normal img').attr('src',jQuery(categoryClass).attr('src'));
+			jQuery('.sw-megamenu.navigation li.level0:eq(5) .dl-menu-right-normal .dl-label-menu').html(categoryText);
+			jQuery('.sw-megamenu.navigation li.level0:eq(5) .dl-menu-right-normal .dl-label-menu.dl-label').css('color',color);
+			jQuery(handle).css('font-weight',fontWeight);
+		}
+		jQuery('.sw-megamenu.navigation li.level0:eq(5) ul.subchildmenu li a').hover(function(){
+			// hovered in
+				dlfa_hover('Ceiling Fans','.rm_fa_ceiling','black',this,"700");
+				dlfa_hover('Wall Fans','.rm_fa_walls','black',this,"700");
+				dlfa_hover('Portable Fans','.rm_fa_portable','black',this,"700");
+				dlfa_hover('Outdoor Fans','.rm_fa_outdoor','white',this,"700");
+				dlfa_hover('Parts &amp; Accessories','.rm_fa_parts','black',this,"700");
+
+			
+				
+		},function(){
+			// hovered out
+			//dlfa_right_menu_set('Fans','.rm_fa','black',jQuery('.sw-megamenu.navigation li.level0:eq(5) ul.subchildmenu li a'),'600');
+			jQuery('.sw-megamenu.navigation li.level0:eq(5) ul.subchildmenu li a').css('font-weight','600');
+
+		});
+
+	})
+</script>
+
+
+
+
+<div class="dl-menu-right-normal">
+	<img src="<?php echo $mediaURL; ?>porto_child/menu/rm_fa.jpg" alt="" />
+	<div style="color:black;" class="dl-label dl-label-menu">Fans</div>
+</div>

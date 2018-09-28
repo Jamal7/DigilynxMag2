@@ -1,0 +1,57 @@
+
+<script type="text/javascript">
+jQuery(document).ready(function()
+{
+	setInterval(function(){
+		var windowWidth = jQuery(window).width();
+	
+		if (windowWidth >= 768)
+		{
+			jQuery('.ui-menu-item.level0') .each(function(){
+				var dropdownMenuDiv =  jQuery(this).find('.level0.submenu');
+				var dropdownMenuDivWidth = dropdownMenuDiv.outerWidth();
+				if (windowWidth - jQuery(this).offset().left >= dropdownMenuDivWidth)
+				{
+					//dropdownMenuDiv.css('left','10px  !important;');
+					if (dropdownMenuDiv.length > 0)
+					dropdownMenuDiv[0].style.setProperty( 'left', '0px', 'important' );
+					
+				} else if (jQuery(this).offset().left >= dropdownMenuDivWidth)
+				{
+					//dropdownMenuDiv.css('right','10px  !important;');
+					//dropdownMenuDiv.css('left','auto  !important;');
+					if (dropdownMenuDiv.length > 0)
+					dropdownMenuDiv[0].style.setProperty( 'right', '0px', 'important' );
+					if (dropdownMenuDiv.length > 0)
+					dropdownMenuDiv[0].style.setProperty( 'left', 'auto', 'important' );
+				}
+				else
+				{
+					//dropdownMenuDiv.css('right','auto  !important;');
+					//dropdownMenuDiv.css('left','auto  !important;');
+					var aa = (windowWidth - dropdownMenuDivWidth) / 2;
+					aa = aa - jQuery(this).offset().left;
+					//dropdownMenuDiv.css('left',aa + 'px  !important;');
+					if (dropdownMenuDiv.length > 0)
+					dropdownMenuDiv[0].style.setProperty( 'right', 'auto', 'important' );
+					if (dropdownMenuDiv.length > 0)
+					dropdownMenuDiv[0].style.setProperty( 'left', aa + 'px', 'important' );
+
+
+				}
+
+			})
+		}
+
+
+
+
+
+	},50)
+	
+});	
+
+
+
+
+</script>

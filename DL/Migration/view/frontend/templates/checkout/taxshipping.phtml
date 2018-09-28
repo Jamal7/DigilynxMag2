@@ -1,0 +1,29 @@
+<div class="dl-cart-summary-taxes">
+<div style="float:left;" class="label">Taxes</div><div style="float:right;" class="value">$0.00 CAD</div>
+<div style="clear:both;max-height:0px;"> &nbsp;</div>
+</div>
+<div class="dl-cart-summary-shipping">
+<div style="float:left;" class="label">Shipping</div><div style="float:right;" class="value"></div>
+<div style="clear:both;max-height:0px;"> &nbsp;</div>
+</div>
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+
+		setInterval(function(){
+			if (jQuery('div.cart-container div.cart-summary table.data.table.totals tr.totals.sub td.amount span.price').length)
+			{
+				if (jQuery('div.cart-container div.cart-summary table.data.table.totals tr.totals.sub td.amount span.price').html().substr(1)>=49)
+				{
+					jQuery('.dl-cart-summary-shipping .value').html('$0.00 CAD');
+				}
+				else
+				{
+					jQuery('.dl-cart-summary-shipping .value').html('$15.00 CAD');	
+				}
+			}
+
+		 }, 500);
+		
+	})
+
+</script>

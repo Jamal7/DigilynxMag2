@@ -1,0 +1,88 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+/*
+Rename images
+Add hidden empty images for all links, load main image
+when top hover load all images
+when hover a paritcular link, call a fuction to change image and dl-lebel lin
+*/
+  
+  
+?>
+<img class="rm_re" style="display:none;" src="<?php echo $mediaURL; ?>porto_child/menu/rm_re.jpg"/>
+<img class="rm_re_housing" style="display:none;" src=""/>
+<img class="rm_re_trim" style="display:none;" src=""/>
+<img class="rm_re_kits" style="display:none;" src=""/>
+<img class="rm_re_spots" style="display:none;" src=""/>
+<img class="rm_re_accessories" style="display:none;" src=""/>
+<img class="rm_re_led" style="display:none;" src=""/>
+
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		window.dl_rm_re_hovered=0;
+		jQuery('.sw-megamenu.navigation li.level0:eq(8)').hover(function(){
+			// hovered in
+			if(window.dl_rm_re_hovered == 0)
+			{
+				jQuery('.rm_re_housing').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_re_housing.jpg');
+				jQuery('.rm_re_trim').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_re_trim.jpg');
+				jQuery('.rm_re_kits').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_re_kits.jpg');
+				jQuery('.rm_re_spots').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_re_spots.jpg');
+				jQuery('.rm_re_accessories').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_re_accessories.jpg');
+				jQuery('.rm_re_led').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_re_led.jpg');
+				window.dl_rm_re_hovered = 1;
+			}
+			dlre_right_menu_set('Recessed','.rm_re','white',jQuery('.sw-megamenu.navigation li.level0:eq(8) ul.subchildmenu li a'),'600');
+		},function(){
+			// hovered out
+		});
+		
+		function dlre_hover(categoryText,categoryClass,color,handle,fontWeight)
+		{
+			if(jQuery(handle).html().indexOf(categoryText) !== -1)
+			{	
+				dlre_right_menu_set(categoryText,categoryClass,color,handle,fontWeight);
+			}
+		}
+		function dlre_right_menu_set(categoryText,categoryClass,color,handle,fontWeight)
+		{
+			jQuery('.sw-megamenu.navigation li.level0:eq(8) .dl-menu-right-normal img').attr('src',jQuery(categoryClass).attr('src'));
+			jQuery('.sw-megamenu.navigation li.level0:eq(8) .dl-menu-right-normal .dl-label-menu').html(categoryText);
+			jQuery('.sw-megamenu.navigation li.level0:eq(8) .dl-menu-right-normal .dl-label-menu.dl-label').css('color',color);
+			jQuery(handle).css('font-weight',fontWeight);
+		}
+		jQuery('.sw-megamenu.navigation li.level0:eq(8) ul.subchildmenu li a').hover(function(){
+			// hovered in
+				dlre_hover('Housing','.rm_re_housing','black',this,"700");
+				dlre_hover('Trim','.rm_re_trim','black',this,"700");
+				dlre_hover('Kits Pendants','.rm_re_kits','black',this,"700");
+				dlre_hover('Multiple Spots','.rm_re_spots','black',this,"700");
+				dlre_hover('Accessories','.rm_re_accessories','black',this,"700");
+				dlre_hover('LED Recessed Lighting','.rm_re_led','black',this,"700");
+
+			
+				
+		},function(){
+			// hovered out
+			//dlre_right_menu_set('Recessed','.rm_re','white',jQuery('.sw-megamenu.navigation li.level0:eq(8) ul.subchildmenu li a'),'600');
+			jQuery('.sw-megamenu.navigation li.level0:eq(8) ul.subchildmenu li a').css('font-weight','600');
+
+		});
+
+	})
+</script>
+
+
+
+
+<div class="dl-menu-right-normal">
+	<img src="<?php echo $mediaURL; ?>porto_child/menu/rm_re.jpg" alt="" />
+	<div style="color:white;" class="dl-label dl-label-menu">Recessed</div>
+</div>

@@ -1,0 +1,405 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+?>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	setInterval(dlSetHeight,500);
+	
+
+});
+function dlSetHeight()
+{
+	jQuery('.dl-89').height(jQuery('.dl-25').height());
+	jQuery('.dl-581').height(jQuery('.dl_home_a_col2').height()-2);
+	jQuery('.dl-69').height(jQuery('.dl-26').height());
+	jQuery('.dl-582').height(jQuery('.dl_home_o_col1').height()-2);
+}
+</script>
+<div class="container">
+
+    <div class="row dl_home_top">
+		
+			<div class="col-xs-4">
+				<div class="dl_home_top_row">
+					NO HIDDEN FEES
+				</div>
+				<div class="dl_home_top_row1">
+					NO DUTY, BROKERAGE FEES OR TAXES
+				</div>
+			</div>
+
+			<div class="col-xs-4">
+				<div class="dl_home_top_row">
+					WE ARE <span>CANADIAN!</span>
+				</div>
+				<div class="dl_home_top_row1">
+					100% CANADIAN OWNED AND OPERATED
+				</div>
+			</div>
+
+			<div class="col-xs-4">
+				<div class="dl_home_top_row">
+					FREE SHIPPING
+				</div>
+				<div class="dl_home_top_row1">
+					ON ORDERS OVER $49*
+				</div>
+			</div>
+			<div style="clear:both;min-height:50px;">&nbsp;</div>
+	</div>
+
+	<div class="row dl_home_a">
+		<div class="col-xs-6 dl_home_a_col1">
+			<a href="<?php echo $storeURL; ?>catalogsearch/result/?q=Allier">
+				<img class="dl-100 dl-581" src="<?php echo $mediaURL; ?>/porto_child/home/a1.jpg"/>
+			</a>
+		</div>
+		<div class="col-xs-6  dl_home_a_col2">
+			<div class="row dl_home_a_row1">
+				<a href="<?php echo $storeURL; ?>all-products?brand_name=245">
+					<img class="dl-100" src="<?php echo $mediaURL; ?>/porto_child/home/a2.jpg"/>
+				</a>
+			</div>
+			<div class="row dl_home_a_row2">
+				<div class="col-xs-6 dl_home_a_row2_col1">
+				<a href="<?php echo $storeURL; ?>on-sale.html">
+					<img class="dl-100" src="<?php echo $mediaURL; ?>/porto_child/home/a3.jpg"/>
+				</a>
+				</div>
+				<div class="col-xs-6 dl_home_a_row2_col2">
+					<a href="<?php echo $storeURL; ?>all-products?brand_name=306">
+						<img class="dl-100" src="<?php echo $mediaURL; ?>/porto_child/home/a4.jpg"/>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="dl_home_c">
+		<div class="dl_home_header">SHOP CEILING LIGHTS</div>
+		<div class="row dl_home_c_row1">
+			<div class="col-xs-3 dl_home_c_row1_col1  dl-89">
+				<a href="<?php echo $storeURL; ?>ceiling-lights.html?dl-listing=yes">
+				<div class="dl-label-main dl-89">
+					<div>SHOP ALL<br>CEILING LIGHTS</div>
+				</div>
+				</a>
+			</div>
+			<div class="col-xs-3 dl_home_c_row1_col2">
+				<a href="<?php echo $storeURL; ?>ceiling-lights/mini-pendants.html">
+				<img class="dl-100 dl-25" src="<?php echo $mediaURL; ?>/porto_child/home/c1.jpg"/>
+				<div class="dl-label">MINI PENDANTS</div>
+				</a>
+			</div>
+			<div class="col-xs-3 dl_home_c_row1_col3">
+				<a href="<?php echo $storeURL; ?>ceiling-lights/flush-mounts.html">
+				<img class="dl-100" src="<?php echo $mediaURL; ?>/porto_child/home/c2.jpg"/>
+				<div class="dl-label">FLUSH MOUNTS</div>
+				</a>
+			</div>
+			<div class="col-xs-3 dl_home_c_row1_col4">
+				<a href="<?php echo $storeURL; ?>ceiling-lights/track-lighting.html">
+				<img class="dl-100 dl-89" src="<?php echo $mediaURL; ?>/porto_child/home/c3.jpg"/>
+				<div class="dl-label">TRACK</div>
+				</a>
+			</div>
+		</div>
+		<div class="row dl_home_c_row2">
+			<div class="col-xs-3 dl_home_c_row2_col1">
+				<a href="<?php echo $storeURL; ?>ceiling-lights/chandeliers.html">
+				<img class="dl-100 dl-89" src="<?php echo $mediaURL; ?>/porto_child/home/c4.jpg"/>
+				<div class="dl-label">CHANDELIERS</div>
+				</a>
+			</div>
+			<div class="col-xs-3 dl_home_c_row2_col2">
+				<a href="<?php echo $storeURL; ?>ceiling-lights/pendants.html">
+				<img class="dl-100" src="<?php echo $mediaURL; ?>/porto_child/home/c5.jpg"/>
+				<div class="dl-label">PENDANTS</div>
+				</a>
+			</div>
+			<div class="col-xs-6 dl_home_c_row2_col3">
+				<a href="<?php echo $storeURL; ?>ceiling-lights/island-pool-lighting.html">
+				<img class="dl-100" src="<?php echo $mediaURL; ?>/porto_child/home/c6.jpg"/>
+				<div class="dl-label">LINEAR SUSPENSION</div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="dl_home_w">
+		<div class="dl_home_header">SHOP WALL LIGHTS</div>
+		<div class="row">
+			<div class="col-xs-3 dl_home_w_col1">
+				<a href="<?php echo $storeURL; ?>wall-lights/wall-lights.html">
+				<img class="dl-100 dl-89" src="<?php echo $mediaURL; ?>/porto_child/home/w1.jpg"/>
+				<div class="dl-label">SCONCES</div>
+				</a>
+			</div>
+
+			<div class="col-xs-6 dl_home_w_col2">
+				<a href="<?php echo $storeURL; ?>wall-lights/bathroom-lights.html">
+				<img class="dl-100 dl-89" src="<?php echo $mediaURL; ?>/porto_child/home/w2.jpg"/>
+				<div class="dl-label" style="color:#808081">VANITIES</div>
+				</a>
+			</div>
+
+			<div class="col-xs-3 dl_home_w_col3 dl-89">
+				<a href="<?php echo $storeURL; ?>wall-lights.html?dl-listing=yes">
+				<div class="dl-label-main dl-89">
+					<div>SHOP ALL<br>WALL LIGHTS</div>
+				</div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="dl_home_o">
+		<div class="dl_home_header">SHOP OUTDOOR LIGHTS</div>
+		<div class="row">
+			<div class="col-xs-9 dl_home_o_col1">
+				<div class="row dl_home_o_row1">
+					<div class="col-xs-4 dl_home_o_row1_col1 dl-89">
+						<a href="<?php echo $storeURL; ?>outdoor-lights.html?dl-listing=yes">
+						<div class="dl-label-main dl-89">
+							<div>SHOP ALL<br>OUTDOOR LIGHTS</div>
+						</div>
+						</a>
+					</div>
+					<div class="col-xs-4 dl_home_o_row1_col2">
+						<a href="<?php echo $storeURL; ?>">
+						<img class="dl-100" src="<?php echo $mediaURL; ?>/porto_child/home/o1.jpg"/>
+						<div class="dl-label">OUTDOOR CEILING</div>
+						</a>
+					</div>
+					<div class="col-xs-4 dl_home_o_row1_col3">
+						<a href="<?php echo $storeURL; ?>outdoor-lights/outdoor-wall-lights.html">
+						<img class="dl-100" src="<?php echo $mediaURL; ?>/porto_child/home/o2.jpg"/>
+						<div class="dl-label" style="color:#666666">OUTDOOR WALL</div>
+						</a>
+					</div>
+				</div>
+				<div class="row dl_home_o_row2">
+					<div class="col-xs-4 dl_home_o_row2_col1">
+						<a href="<?php echo $storeURL; ?>outdoor-lights/post-lights.html">
+						<img class="dl-100 dl-89" src="<?php echo $mediaURL; ?>/porto_child/home/o3.jpg"/>
+						<div class="dl-label">POST LIGHTS</div>
+						</a>
+					</div>
+					<div class="col-xs-8 dl_home_o_row2_col2">
+						<a href="<?php echo $storeURL; ?>outdoor-lights/landscape-lighting.html">
+						<img class="dl-100 dl-89" src="<?php echo $mediaURL; ?>/porto_child/home/o4.jpg"/>
+						<div class="dl-label">SHOP LANDSCAPE LIGHTING</div>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-3 dl_home_o_col2">
+				<a href="<?php echo $storeURL; ?>">
+				<img class="dl-100 dl-582" src="<?php echo $mediaURL; ?>/porto_child/home/o5.jpg"/>
+				<div class="dl-label">OUTDOOR CHANDELIER</div>
+				</a>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+	<div class="dl_home_l">
+		<div class="dl_home_header">SHOP LAMPS</div>
+		<div class="row">
+			<div class="col-xs-3 dl_home_l_col1">
+				<a href="<?php echo $storeURL; ?>table-lamps/floor-lamps.html">
+				<img class="dl-100 dl-89" src="<?php echo $mediaURL; ?>/porto_child/home/l1.jpg"/>
+				<div class="dl-label">FLOOR LAMPS</div>
+				</a>
+			</div>
+
+			<div class="col-xs-3 dl_home_l_col2">
+				<a href="<?php echo $storeURL; ?>table-lamps/table-lamps.html">
+				<img class="dl-100" src="<?php echo $mediaURL; ?>/porto_child/home/l2.jpg"/>
+				<div class="dl-label">TABLE LAMPS</div>
+				</a>
+			</div>
+
+			<div class="col-xs-3 dl_home_l_col3">
+				<a href="<?php echo $storeURL; ?>table-lamps/desk-lamps.html">
+				<img class="dl-100" src="<?php echo $mediaURL; ?>/porto_child/home/l3.jpg"/>
+				<div class="dl-label">DESK LAMPS</div>
+				</a>
+			</div>
+
+			<div class="col-xs-3 dl_home_l_col4 dl-89">
+				<a href="<?php echo $storeURL; ?>table-lamps.html?dl-listing=yes">
+				<div class="dl-label-main dl-89">
+					<div>SHOP ALL<br>LAMPS</div>
+				</div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="dl_home_f">
+		<div class="dl_home_header">SHOP FANS</div>
+		<div class="row">
+			<div class="col-xs-3 dl_home_f_col1 dl-89">
+				<a href="<?php echo $storeURL; ?>fans.html?dl-listing=yes">
+				<div class="dl-label-main dl-89">
+					<div>SHOP ALL<br>FANS</div>
+				</div>
+				</a>
+			</div>
+
+			<div class="col-xs-3 dl_home_f_col2">
+				<a href="<?php echo $storeURL; ?>">
+				<img class="dl-100" src="<?php echo $mediaURL; ?>/porto_child/home/f1.jpg"/>
+				<div class="dl-label">PORTABLE FANS</div>
+				</a>
+			</div>
+
+			<div class="col-xs-6 dl_home_f_col3">
+				<a href="<?php echo $storeURL; ?>fans/ceiling-fans.html">
+				<img class="dl-100 dl-89" src="<?php echo $mediaURL; ?>/porto_child/home/f2.jpg"/>
+				<div class="dl-label">CEILING FANS</div>
+				</a>
+			</div>
+		</div>
+
+		
+	</div>
+
+	<div class="dl_home_s">
+		<div class="dl_home_header">BEST SELLERS</div>
+		<div class="row">
+			<!--  
+			<div class="col-xs-3 dl_home_s_col1">
+				<div class="dl_home_s_col">
+					<img class="dl-100 dl-69" src="<?php echo $mediaURL; ?>/porto_child/home/s1.jpg"/>
+					<div style="color:#333333;" class="dl-label2">
+						<div class="dl-prd-hm-bst-name">Canarm ICH394A04CH9 4 Light Chandelier</div>
+						<div class="dl-prd-hm-bst-price">CAD $220.24</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-3 dl_home_s_col2">
+				<div class="dl_home_s_col">
+					<img class="dl-100 dl-26" src="<?php echo $mediaURL; ?>/porto_child/home/s2.jpg"/>
+					<div style="color:#333333;" class="dl-label2">
+						<div class="dl-prd-hm-bst-name">Kuzco TR1002-BN Brushed Nickel Track Light </div>
+						<div class="dl-prd-hm-bst-price">CAD $198.00</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-3 dl_home_s_col3">
+				<div class="dl_home_s_col">
+					<img class="dl-100" src="<?php echo $mediaURL; ?>/porto_child/home/s3.jpg"/>
+					<div style="color:#333333;" class="dl-label2">
+						<div class="dl-prd-hm-bst-name">Robert Abbey Z2091 18 Light Bronze Chandelier</div>
+						<div class="dl-prd-hm-bst-price">CAD $1897.50</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-3 dl_home_s_col4">
+				<div class="dl_home_s_col">
+					<img class="dl-100  dl-69" src="<?php echo $mediaURL; ?>/porto_child/home/s4.jpg"/>
+					<div style="color:#333333;" class="dl-label2">
+						<div class="dl-prd-hm-bst-name">Canarm ICH282B05CH25 5 Light Chrome Chandelier</div>
+						<div class="dl-prd-hm-bst-price">CAD $285.56</div>
+					</div>
+				</div>
+			</div>  --> 
+
+
+			<div class="col-xs-3 dl_home_s_col1">
+				<div class="dl_home_s_col">
+					<a href="<?php echo $storeURL; ?>canarm-ich394a04ch9-4-light-chrome-chandeliers.html">
+						<img class="dl-100 dl-69" src="<?php echo $mediaURL; ?>/porto_child/home/best_seller_1.png"/>
+					</a>
+				</div>
+			</div>
+
+
+			<div class="col-xs-3 dl_home_s_col2">
+				<div class="dl_home_s_col">
+					<a href="<?php echo $storeURL; ?>kuzco-tr10022-bn-brushed-nickel-track-lighting.html">
+						<img class="dl-100 dl-26" src="<?php echo $mediaURL; ?>/porto_child/home/best_seller_2.png"/>
+					</a>
+				</div>
+			</div>
+
+			<div class="col-xs-3 dl_home_s_col3">
+				<div class="dl_home_s_col">
+					<a href="<?php echo $storeURL; ?>robert-abbey-z2091-18-light-bronze-chandeliers.html">
+						<img class="dl-100" src="<?php echo $mediaURL; ?>/porto_child/home/best_seller_3.png"/>
+					</a>
+				</div>
+			</div>
+
+
+			<div class="col-xs-3 dl_home_s_col4">
+				<div class="dl_home_s_col">
+					<a href="<?php echo $storeURL; ?>canarm-ich282b05ch25-5-light-chrome-chandeliers.html">
+						<img class="dl-100  dl-69" src="<?php echo $mediaURL; ?>/porto_child/home/best_seller_4.png"/>
+					</a>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="dl_home_sale">
+		
+			<div class="dl_home_sale_img">
+				<img src="<?php echo $mediaURL; ?>/porto_child/home/cw2.jpg"/>
+			</div>
+			<div class="dl_home_sale_text">
+				SHOP ALL CANADIAN BRANDS ON SALE
+			</div>
+		
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="dl_home_b1">
+		 LIGHTS CANADA
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="dl_home_b2">
+		 	<img src="<?php echo $mediaURL; ?>/porto_child/canadian.png"/>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="dl_home_b3"> 
+			Lights Canada was created to provide Canadians an online store offering the best selection and the lastest designs secifically for Canadians. 
+			We are making the online shopping experience for lighting products easy and convenient by removing all of the annoying and extra fess 
+			that are typically found at the check out. To make things even easier, we’ve also included free shipping on all orders over $49. 
+			And of course, all of our prices are in Canadian dollars. The price you see is the price you pay. Period.  
+		</div>
+		<div class="dl_border_bottom">&nbsp;</div>
+	</div>
+
+	
+
+
+
+
+</div>

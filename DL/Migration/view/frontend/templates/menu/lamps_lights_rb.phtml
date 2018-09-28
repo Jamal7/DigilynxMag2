@@ -1,0 +1,85 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+/*
+Rename images
+Add hidden empty images for all links, load main image
+when top hover load all images
+when hover a paritcular link, call a fuction to change image and dl-lebel lin
+*/
+  
+  
+?>
+<img class="rm_la" style="display:none;" src="<?php echo $mediaURL; ?>porto_child/menu/rm_cl.jpg"/>
+<img class="rm_la_table" style="display:none;" src=""/>
+<img class="rm_la_accent" style="display:none;" src=""/>
+<img class="rm_la_floor" style="display:none;" src=""/>
+<img class="rm_la_task" style="display:none;" src=""/>
+<img class="rm_la_led" style="display:none;" src=""/>
+
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		window.dl_rm_la_hovered=0;
+		jQuery('.sw-megamenu.navigation li.level0:eq(4)').hover(function(){
+			// hovered in
+			if(window.dl_rm_la_hovered == 0)
+			{
+				jQuery('.rm_la_table').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_la_table.jpg');
+				jQuery('.rm_la_accent').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_la_accent.jpg');
+				jQuery('.rm_la_floor').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_la_floor.jpg');
+				jQuery('.rm_la_task').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_la_task.jpg');
+				jQuery('.rm_la_led').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_la_led.jpg');
+				window.dl_rm_la_hovered = 1;
+			}
+			dlla_right_menu_set('Lamps','.rm_la','white',jQuery('.sw-megamenu.navigation li.level0:eq(4) ul.subchildmenu li a'),'600');
+		},function(){
+			// hovered out
+		});
+		
+		function dlla_hover(categoryText,categoryClass,color,handle,fontWeight)
+		{
+			if(jQuery(handle).html().indexOf(categoryText) !== -1)
+			{	
+				dlla_right_menu_set(categoryText,categoryClass,color,handle,fontWeight);
+			}
+		}
+		function dlla_right_menu_set(categoryText,categoryClass,color,handle,fontWeight)
+		{
+			jQuery('.sw-megamenu.navigation li.level0:eq(4) .dl-menu-right-normal img').attr('src',jQuery(categoryClass).attr('src'));
+			jQuery('.sw-megamenu.navigation li.level0:eq(4) .dl-menu-right-normal .dl-label-menu').html(categoryText);
+			jQuery('.sw-megamenu.navigation li.level0:eq(4) .dl-menu-right-normal .dl-label-menu.dl-label').css('color',color);
+			jQuery(handle).css('font-weight',fontWeight);
+		}
+		jQuery('.sw-megamenu.navigation li.level0:eq(4) ul.subchildmenu li a').hover(function(){
+			// hovered in
+				dlla_hover('Table Lamps','.rm_la_table','black',this,"700");
+				dlla_hover('Accent Lamps','.rm_la_accent','black',this,"700");
+				dlla_hover('Floor Lamps','.rm_la_floor','white',this,"700");
+				dlla_hover('Task Lamps','.rm_la_task','white',this,"700");
+				dlla_hover('LED Lamps','.rm_la_led','white',this,"700");
+
+			
+				
+		},function(){
+			// hovered out
+			//dlla_right_menu_set('Lamps','.rm_la','white',jQuery('.sw-megamenu.navigation li.level0:eq(4) ul.subchildmenu li a'),'600');
+			jQuery('.sw-megamenu.navigation li.level0:eq(4) ul.subchildmenu li a').css('font-weight','600');
+
+		});
+
+	})
+</script>
+
+
+
+
+<div class="dl-menu-right-normal">
+	<img src="<?php echo $mediaURL; ?>porto_child/menu/rm_la.jpg" alt="" />
+	<div style="color:white;" class="dl-label dl-label-menu">Lamps</div>
+</div>

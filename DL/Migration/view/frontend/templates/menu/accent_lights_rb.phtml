@@ -1,0 +1,82 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+/*
+Rename images
+Add hidden empty images for all links, load main image
+when top hover load all images
+when hover a paritcular link, call a fuction to change image and dl-lebel lin
+*/
+  
+  
+?>
+<img class="rm_ac" style="display:none;" src="<?php echo $mediaURL; ?>porto_child/menu/rm_ac.jpg"/>
+<img class="rm_ac_step" style="display:none;" src=""/>
+<img class="rm_ac_under" style="display:none;" src=""/>
+<img class="rm_ac_picture" style="display:none;" src=""/>
+<img class="rm_ac_led" style="display:none;" src=""/>
+
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		window.dl_rm_ac_hovered=0;
+		jQuery('.sw-megamenu.navigation li.level0:eq(6)').hover(function(){
+			// hovered in
+			if(window.dl_rm_ac_hovered == 0)
+			{
+				jQuery('.rm_ac_step').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_ac_step.jpg');
+				jQuery('.rm_ac_under').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_ac_under.jpg');
+				jQuery('.rm_ac_picture').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_ac_picture.jpg');
+				jQuery('.rm_ac_led').attr('src','<?php echo $mediaURL; ?>porto_child/menu/rm_ac_led.jpg');
+				window.dl_rm_ac_hovered = 1;
+			}
+			dlac_right_menu_set('Accent','.rm_ac','white',jQuery('.sw-megamenu.navigation li.level0:eq(6) ul.subchildmenu li a'),'600');
+		},function(){
+			// hovered out
+		});
+		
+		function dlac_hover(categoryText,categoryClass,color,handle,fontWeight)
+		{
+			if(jQuery(handle).html().indexOf(categoryText) !== -1)
+			{	
+				dlac_right_menu_set(categoryText,categoryClass,color,handle,fontWeight);
+			}
+		}
+		function dlac_right_menu_set(categoryText,categoryClass,color,handle,fontWeight)
+		{
+			jQuery('.sw-megamenu.navigation li.level0:eq(6) .dl-menu-right-normal img').attr('src',jQuery(categoryClass).attr('src'));
+			jQuery('.sw-megamenu.navigation li.level0:eq(6) .dl-menu-right-normal .dl-label-menu').html(categoryText);
+			jQuery('.sw-megamenu.navigation li.level0:eq(6) .dl-menu-right-normal .dl-label-menu.dl-label').css('color',color);
+			jQuery(handle).css('font-weight',fontWeight);
+		}
+		jQuery('.sw-megamenu.navigation li.level0:eq(6) ul.subchildmenu li a').hover(function(){
+			// hovered in
+				dlac_hover('Step Lights','.rm_ac_step','white',this,"700");
+				dlac_hover('Under Counter Lighting','.rm_ac_under','black',this,"700");
+				dlac_hover('Picture Lights','.rm_ac_picture','white',this,"700");
+				dlac_hover('LED Accent Lighting','.rm_ac_led','white',this,"700");
+
+			
+				
+		},function(){
+			// hovered out
+			//dlac_right_menu_set('Accent','.rm_ac','white',jQuery('.sw-megamenu.navigation li.level0:eq(6) ul.subchildmenu li a'),'600');
+			jQuery('.sw-megamenu.navigation li.level0:eq(6) ul.subchildmenu li a').css('font-weight','600');
+
+		});
+
+	})
+</script>
+
+
+
+
+<div class="dl-menu-right-normal">
+	<img src="<?php echo $mediaURL; ?>porto_child/menu/rm_ac.jpg" alt="" />
+	<div style="color:white;" class="dl-label dl-label-menu">Accent</div>
+</div>

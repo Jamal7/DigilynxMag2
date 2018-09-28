@@ -1,0 +1,308 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+?>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	setInterval(dlSetHeight,500);
+	
+
+});
+function dlSetHeight()
+{
+	jQuery(".dl_cl_col_m img").height(jQuery(".dl_cl_3c .dl_cl_col_r img").height());
+	jQuery(".dl-label-heading-grey").height(jQuery(".dl_cl_3c .dl_cl_col_r img").height());
+	jQuery(".dl_cl_col_l img").height(jQuery(".dl_cl_3c .dl_cl_col_r img").height()+0.4);
+}
+</script>
+
+<div class="container dlclcont">
+	<div class="row dl_cl_mainrow">
+
+		<div class="col-sm-3">
+			<div class="dl-cat-bar-head">
+			Bulbs
+			</div>
+			<div class="dl-cat-bar-subs">
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Incandescent A Type</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Incandescent B Type</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Incandescent Decorative</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Incandescent Reflector</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Incandescent Speciality</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">LED A Type</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">LED B Type</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">LED Decorative</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">LED Spots &amp; Reflector</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">LED Miniature</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Halogen A Type</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Halogen Miniature</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Halogen Decorative</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Halogen Spots &amp; Reflector</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Halogen Speciality</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">CFL A &amp; B Type</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Fluorescent Pin</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Fluorescent Decorative</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Fluorescent Reflector</a></div>
+				<div class="dl-cat-bar-subs-item"><a href="<?php echo $storeURL; ?>">Fluorescent Speciality</a></div>
+
+			</div>
+		</div>
+
+		<div class="col-sm-9 dlclcontr">
+			<div class="row dl_cl_1c">
+				<a href="<?php echo $storeURL; ?>bulbs.html?dl-listing=yes">
+					<img src="<?php echo $mediaURL; ?>porto_child/cl/clb1.jpg"/>
+					<div class="dl-label-complete">Shop All<br>Bulbs</div>
+				</a>
+			</div>
+
+			<div class="dl_home_header">Incandescent</div>
+			<div class="row dl_cl_3c">
+				<div class="col-xs-4 dl_cl_col_l">
+					<div class="dl-label-heading-grey">
+					<a href="<?php echo $storeURL; ?>">
+						<div class="dl-label-complete">Shop All<br>Incandescent Bulbs</div>
+					</a>
+					</div>
+				</div>
+				<div class="col-xs-4 dl_cl_col_m">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb2.jpg"/>
+						<div class="dl-label">Incandescent A Type</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_r">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb3.jpg"/>
+						<div class="dl-label">Incandescent B Type</div>
+					</a>
+				</div>
+			</div>
+			<div class="row dl_cl_3c">
+				<div class="col-xs-4 dl_cl_col_l">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb4.jpg"/>
+						<div class="dl-label">Incandescent Decorative</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_m">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb5.jpg"/>
+						<div class="dl-label">Incandescent Reflector</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_r">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb6.jpg"/>
+						<div class="dl-label">Incandescent Speciality</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="dl_home_header">LED</div>
+			<div class="row dl_cl_3c">
+				<div class="col-xs-4 dl_cl_col_l">
+					<div class="dl-label-heading-grey">
+					<a href="<?php echo $storeURL; ?>">
+						<div class="dl-label-complete">Shop All<br>LED Bulbs</div>
+					</a>
+					</div>
+				</div>
+				<div class="col-xs-4 dl_cl_col_m">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb7.jpg"/>
+						<div class="dl-label">LED A Type</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_r">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb8.jpg"/>
+						<div class="dl-label">LED B Type</div>
+					</a>
+				</div>
+			</div>
+			<div class="row dl_cl_3c">
+				<div class="col-xs-4 dl_cl_col_l">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb9.jpg"/>
+						<div class="dl-label">LED Decorative</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_m">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb10.jpg"/>
+						<div class="dl-label">LED Spots &amp; Reflector</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_r">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb11.jpg"/>
+						<div class="dl-label">LED Miniature</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="dl_home_header">Halogen</div>
+			<div class="row dl_cl_3c">
+				<div class="col-xs-4 dl_cl_col_l">
+					<div class="dl-label-heading-grey">
+					<a href="<?php echo $storeURL; ?>">
+						<div class="dl-label-complete">Shop All<br>Halogen Bulbs</div>
+					</a>
+					</div>
+				</div>
+				<div class="col-xs-4 dl_cl_col_m">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb12.jpg"/>
+						<div class="dl-label">Halogen A Type</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_r">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb13.jpg"/>
+						<div class="dl-label">Halogen Miniature</div>
+					</a>
+				</div>
+			</div>
+			<div class="row dl_cl_3c">
+				<div class="col-xs-4 dl_cl_col_l">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb14.jpg"/>
+						<div class="dl-label">Halogen Decorative</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_m">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb15.jpg"/>
+						<div class="dl-label">Halogen Spots &amp; Reflector</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_r">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb16.jpg"/>
+						<div class="dl-label">Halogen Speciality</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="dl_home_header">Fluorescent</div>
+			<div class="row dl_cl_3c">
+				<div class="col-xs-4 dl_cl_col_l">
+					<div class="dl-label-heading-grey">
+					<a href="<?php echo $storeURL; ?>">
+						<div class="dl-label-complete">Shop All<br>Fluorescent Bulbs</div>
+					</a>
+					</div>
+				</div>
+				<div class="col-xs-4 dl_cl_col_m">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb17.jpg"/>
+						<div class="dl-label">CFL A Type</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_r">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb18.jpg"/>
+						<div class="dl-label">Fluorescent Miniature</div>
+					</a>
+				</div>
+			</div>
+			<div class="row dl_cl_3c">
+				<div class="col-xs-4 dl_cl_col_l">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb19.jpg"/>
+						<div class="dl-label">Fluorescent Decorative</div>
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_m">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb20.jpg"/>
+						<div class="dl-label">Fluorescent Spots &amp; Reflector</div>  
+					</a>
+				</div>
+				<div class="col-xs-4 dl_cl_col_r">
+					<a href="<?php echo $storeURL; ?>">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb21.jpg"/>
+						<div class="dl-label">Fluorescent Speciality</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="dl_home_header dl_extra_margin">Bulb FAQs</div>
+
+			<div class="dl_bulb_q">Q: Are bulbs included with my fixture?</div>
+
+			<div class="dl_bulb_a">Depending on the severity of the damage(s), we will either ask that you dispose of the item and a new replacement will be shipped to you or we will provide instructions to have it shipped back to our distribution centre at no cost. For any missing or damaged parts, we will ship these missing or damaged items to you at no cost.</div>
+
+			<div class="dl_bulb_q">Q: What do the terms LED Integrated, Lumens and Kelvin Temperature mean?</div>
+
+			<div class="dl_bulb_a">In order to offer our free shipping policy, your order will be shipped from the manufacturer to our distribution centre where it will then be inspected and then shipped to your door. Orders over $49.00 that qualify for free shipping with be shipped Standard Ground service. Please note, we do not ship to PO Box addresses.</div>
+
+			<div class="dl_bulb_images">
+				<div class="row">
+					<div class="col-sm-8">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb22.jpg"/>
+					</div>
+					<div class="col-sm-4">
+						<img src="<?php echo $mediaURL; ?>porto_child/cl/clb23.jpg"/>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="dl_bulb_q">Q: Can I use LED bubs in any fixture?</div>
+
+			<div class="dl_bulb_a">When you order is placed, you will receive a confirmation email within 24 hours with order acknowledgement. Within 2 bussiness days, a second email that includes an estimated ship date based on availablity from our vendors or distribution centre and any back order information will follow. If your project is time sensitive, please ensure to call us at 1-844-802-0655 or email us at <a href="mailto:sales@lightscanada.ca">sales@lightscanada.ca</a>.</div>
+
+			<div class="dl_bulb_q">Q: Are all LEDs Dimmable?</div>
+
+			<div class="dl_bulb_a">We ask that upon receipt of your shipment to thoroughly check for any damages. If you do experience any issues, please contact us either by calling 1-844-802-0655 or emailing us at <a href="mailto:sales@lightscanada.ca">sales@lightscanada.ca</a>.</div>
+
+			<div class="dl_bulb_q">Q: Can I return the  Bulbs I’ve purchased from LightsCanada.ca?</div>
+
+			<div class="dl_bulb_a">Depending on the severity of the damage(s), we will either ask that you dispose of the item and a new replacement will be shipped to you or we will provide instructions to have it shipped back to our distribution centre at no cost. For any missing or damaged parts, we will ship these missing or damaged items to you at no cost.</div>
+
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+
+<?php
+$request = $objectManager->get('\Magento\Framework\App\Request\Http');
+if ($request->getParam('dl-listing')=='yes')
+{
+	?>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('div.columns').show();
+			
+			})
+			
+		</script>
+	<?php
+}
+else
+{
+	?>
+		<script type="text/javascript">
+		jQuery('div.category-view').show();
+			
+		</script>
+	<?php
+}
+
+
+

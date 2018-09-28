@@ -1,0 +1,145 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$_storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $_storeManager->getStore()->getBaseUrl();
+
+?>
+<script type="text/javascript">
+	jQuery(document).ready(function () {
+		setInterval(function()
+		{
+			
+			jQuery("#minicart-content-wrapper .details-qty.qty .item-qty.cart-item-qty").each(function () {
+				if (this.value.match(/^[0-9]+$/) == null){
+			   		this.value=this.value.replace(/\D/g,'');
+			   	}
+			   	if (parseInt(this.value) == 0)
+			   		this.value='';
+			
+			});
+			//jQuery("#shopping-cart-table .input-text.qty").val( jQuery("#shopping-cart-table .input-text.qty").val().replace(/[^0-9]/g,''));
+		}, 100);
+		// set interval with a var
+		// check if items loaded, than call and clear interval
+		var intervl = setInterval(function()
+		{
+			
+			if (jQuery(".minicart-wrapper .action.showcart .counter.qty .counter-label span").length && jQuery.trim(jQuery(".minicart-wrapper .action.showcart .counter.qty .counter-label span").html()) == 'items')
+			{
+				require([
+		           'Magento_Customer/js/customer-data'
+		        ], function (customerData) {
+		            var sections = ['cart'];
+		            customerData.invalidate(sections);
+		            customerData.reload(sections, true);
+		        });
+		        clearInterval(intervl);
+
+
+			}
+		}, 100);
+
+	})
+	jQuery(document).mouseup(function(e) 
+	{
+	    var container = jQuery(".dl-cart-add-popup");
+
+	    if (!container.is(e.target) && container.has(e.target).length === 0) 
+	    {
+	        container.hide();
+	    }
+	});
+	function dlMiniCartInt(e)
+	{
+
+		if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57))
+	    	return false;
+	    if(jQuery(e.target).val() == '0')
+	    	return false;
+
+	}
+	function dlCloseCartPopup()
+	{
+		jQuery('.dl-cart-add-popup').hide();
+	}
+	function dlCalledFromChild(productName,productImageURL,productURL)
+	{
+		require([
+			        'Magento_Customer/js/customer-data'
+			    ], function (customerData) {
+			        var sections = ['cart'];
+			        customerData.invalidate(sections);
+			        customerData.reload(sections, true);
+			    });
+		setTimeout(function() {
+			var cartPrice = jQuery('#minicart-content-wrapper .block-content .subtotal .price').html();
+	   		var cartPriceNumber = jQuery.trim(cartPrice);
+	        cartPriceNumber = cartPriceNumber.substring(1);
+	        var freeShippingText = 'Your order qualifies for<br><span class="dl-shipping-span-cart">Free Shipping</span>';
+
+	        jQuery('.dl-cart-product-a').attr('href',productURL);
+	        jQuery('#dl-cart-product-img').attr('src',productImageURL);
+	        jQuery('.dl-cart-product-a2').attr('href',productURL);
+	        jQuery('.dl-cart-product-a2').html(productName);
+	        jQuery('#dl-total-span-cart').html(cartPrice);
+	        jQuery('.dl-shipping-row-cart').hide();
+	        if (cartPriceNumber>=49)
+	        {
+	            jQuery('.dl-shipping-row-cart').html(freeShippingText);
+	            jQuery('.dl-shipping-row-cart').show();
+	        }
+
+
+	        jQuery(".dl-cart-add-popup").prependTo(".page-wrapper");
+	        jQuery('.dl-cart-add-popup').show();
+	        
+	    }, 1500);
+	    jQuery('.fancybox-item.fancybox-close').click();
+
+	}
+
+</script>
+<div class="container dl-cart-add-popup">
+	<div class="row">
+		<div class="dl-cart-col-1 col-xs-4">
+			<div class="row dl-pic-row-cart">
+				<a class="dl-cart-product-a" href="http://173.247.246.22/~lights90/lightscanada/z-lite-sqpm-bk-black-pier-mounts.html"><img id="dl-cart-product-img" src=""/></a>
+			</div>
+			<div class="row dl-title-row-cart">
+				<a class="dl-cart-product-a2" href="http://173.247.246.22/~lights90/lightscanada/z-lite-sqpm-bk-black-pier-mounts.html">Test Product 1</a>
+			</div>
+
+		</div>
+		<div class="dl-cart-col-2 col-xs-8">
+			<div class="dl-cart-popup-cross">
+				<a href="javascript:void(0)" onclick="dlCloseCartPopup()">&#10006;</a>
+			</div>
+			<div class="row dl-add-row-cart">
+				Item added to cart
+			</div>
+			<div class="row dl-total-row-cart">
+				Subtotal CAD <span id="dl-total-span-cart"> </span>
+			</div>
+			<div class="row dl-shipping-row-cart">
+				
+			</div>
+			<div class="row dl-buttons-row-cart">
+				<div class="dl-cart-col-3 col-sm-6">
+					<a href="<?php echo $storeURL; ?>checkout/cart">
+					<button class="dl-cart-pop-view-btn">View&nbsp;Cart</button>
+					</a>
+				</div>
+				<div class="dl-cart-col-4 col-sm-6">
+					<a  href="<?php echo $storeURL; ?>checkout">
+					<button class="dl-cart-pop-checkout-btn">
+					 	Checkout
+					</button>
+					</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+</div>

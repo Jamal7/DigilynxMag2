@@ -1,0 +1,29 @@
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+	
+
+		window.shippingAdded = 0;
+		
+
+		dldldldlint = setInterval(function(){
+			if (jQuery("input[name=postcode]").length>0)
+			{
+				jQuery("input[name=postcode]").blur(function(){
+					if (window.shippingAdded == 0) {
+
+						jQuery('.radio').click();
+						window.shippingAdded = 1;
+					}
+				});
+				clearInterval(dldldldlint);
+			}
+
+		},100);
+
+
+		
+
+
+});
+
+</script>

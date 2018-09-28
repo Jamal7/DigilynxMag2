@@ -1,0 +1,109 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$imageHelper  = $objectManager->get('\Magento\Catalog\Helper\Image');
+$_blockFactory = $objectManager->get('\Magento\Framework\View\Element\BlockFactory');
+$currentProduct = $block->getProduct();
+$relatedProducts = $currentProduct->getRelatedProducts(); 
+$productObject = $objectManager->get('Magento\Catalog\Model\Product');
+if (!empty($relatedProducts)) {  
+	?>
+<div class="dl-owl-related-products">
+<div class="dl-owl-related-products-heading">
+Related Products
+</div>
+<div class="owl-carousel">
+<?php
+
+
+    
+    if (!empty($relatedProducts)) {
+        
+        foreach ($relatedProducts as $relatedProduct) {
+            $product = $productObject->loadByAttribute('sku', $relatedProduct->getSku());
+            $sku = $relatedProduct->getSku(); 
+            $imageURL = $imageHelper->init($product,'category_page_list')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(300,300)->getUrl();
+             //$productURL = $product -> getProductUrl();
+            ?>
+			<div class="dl-owl-item item product product-item">
+				<div class="product-item-info">
+					<div class="product photo product-item-photo">
+						<a href="<?php echo $product->getProductUrl(); ?>">
+							<img class="product-image-photo default_image" src="<?php echo $imageURL; ?>"/>
+						</a>
+					</div>
+				</div>
+			</div>
+			<?php
+
+
+			}
+        }
+        
+
+
+?>
+</div>
+</div>
+<?php } ?>
+
+
+<div class="container">
+<div class="row dl_home_top dl_home_top_product">
+		
+		<div class="col-xs-4">
+			<div class="dl_home_top_row">
+				NO HIDDEN FEES
+			</div>
+			<div class="dl_home_top_row1">
+				NO DUTY, BROKERAGE FEES OR TAXES
+			</div>
+		</div>
+
+		<div class="col-xs-4">
+			<div class="dl_home_top_row">
+				WE ARE <span>CANADIAN!</span>
+			</div>
+			<div class="dl_home_top_row1">
+				100% CANADIAN OWNED AND OPERATED
+			</div>
+		</div>
+
+		<div class="col-xs-4">
+			<div class="dl_home_top_row">
+				FREE SHIPPING
+			</div>
+			<div class="dl_home_top_row1">
+				ON ORDERS OVER $49*
+			</div>
+		</div>
+		<div style="clear:both;min-height:50px;">&nbsp;</div>
+	
+</div>
+</div>
+
+<script type="text/javascript">
+    require([
+      'jquery',
+      'owl.carousel/owl.carousel.min'
+    ], function ($) {
+      $(".owl-carousel").owlCarousel({
+        responsiveClass:true,
+        loop:true,	
+        margin:5,
+        dots: false,
+        nav: true,
+        navRewind: true,
+        navText: ["<em class='porto-icon-left-open-big'></em>","<em class='porto-icon-right-open-big'></em>"],
+        responsive:{
+	        0:{
+	            items:2,
+	            nav:true
+	        },
+	        768:{
+	            items:4,
+	            nav:true
+	        }
+	    }
+      });
+    });
+  </script>

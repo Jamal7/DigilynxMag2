@@ -1,0 +1,152 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaURL =  $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                ->getStore()
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeURL = $storeManager->getStore()->getBaseUrl();
+
+?>
+<div class="container">
+
+    <div class="home-secondary-banner">
+        <img src="<?php echo $mediaURL; ?>/porto_child/on-sale/sale_banner_top.png" alt="Image" />
+    </div>
+    
+        <div class="dl_z_onsale">
+            <div class="row">
+	            
+                <div class="col-xs-4 dl_z_onsale_w_col3">
+                    <a href ="<?php echo $storeURL; ?>all-products?brand_name=304">
+                            <!-- <div class="dl_z_onsale-label-sale third">
+                                <div class="dl_z_onsale-label1-save">SAVE 10%
+                                <div class="dl_z_onsale-label2-date">ENDS 01/01/2018</div>
+                            </div></div> -->
+                        <img class="dl-100 dl-89" src="<?php echo $mediaURL; ?>/porto_child/on-sale/dainolite_july_sale.jpg"/>
+                        <!-- <div class="dl_z_onsale-label-shopnow">
+                            <div class="dl_z_onsale-label1">SHOP NOW</div>
+                            <div class="dl_z_onsale-label2">BRAND</div>
+                        </div> -->
+                    </a>
+                </div>
+            
+            
+                <div class="col-xs-4 dl_z_onsale_w_col2">
+                    <a href ="<?php echo $storeURL; ?>all-products?brand_name=232">
+                            <!-- <div class="dl_z_onsale-label-sale second">
+                                <div class="dl_z_onsale-label1-save">SAVE 10%
+                                <div class="dl_z_onsale-label2-date">ENDS 01/01/2018</div>
+                            </div></div> -->
+                        <img class="dl-100 dl-89" src="<?php echo $mediaURL; ?>/porto_child/on-sale/et2_maxim_july_sale.jpg"/>
+                        <!-- <div class="dl_z_onsale-label-shopnow">
+                            <div class="dl_z_onsale-label1">SHOP NOW</div>
+                            <div class="dl_z_onsale-label2">BRAND</div>
+                        </div> -->
+                    </a>
+                </div>
+            
+            
+                <div class="col-xs-4 dl_z_onsale_w_col3">
+                    <a href ="<?php echo $storeURL; ?>all-products?brand_name=311">
+                            <!-- <div class="dl_z_onsale-label-sale first">
+                                <div class="dl_z_onsale-label1-save">SAVE 10%
+                                <div class="dl_z_onsale-label2-date">ENDS 01/01/2018</div>
+                            </div></div> -->
+                        <img class="dl-100 dl-89" src="<?php echo $mediaURL; ?>/porto_child/on-sale/zlite_july_sale_1.jpg"/>
+                        <!-- <div class="dl_z_onsale-label-shopnow">
+                            <div class="dl_z_onsale-label1">SHOP NOW</div>
+                            <div class="dl_z_onsale-label2">BRAND</div>
+                        </div> -->
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        <div class="dl_z_onsale">
+            <div class="row">
+	            
+                <div class="col-xs-4 dl_z_onsale_w_col3">
+                    <a href ="<?php echo $storeURL; ?>all-products?brand_name=231">
+                            <!-- <div class="dl_z_onsale-label-sale third">
+                                <div class="dl_z_onsale-label1-save">SAVE 10%
+                                <div class="dl_z_onsale-label2-date">ENDS 01/01/2018</div>
+                            </div></div> -->
+                        <img class="dl-100 dl-89" src="<?php echo $mediaURL; ?>/porto_child/on-sale/elk_july_sale.jpg"/>
+                        <!-- <div class="dl_z_onsale-label-shopnow">
+                            <div class="dl_z_onsale-label1">SHOP NOW</div>
+                            <div class="dl_z_onsale-label2">BRAND</div>
+                        </div> -->
+                    </a>
+                </div>
+                 
+            </div>
+        </div>
+        
+        
+
+        
+
+        
+        
+        
+
+<!--
+	Sales Banner Code Save
+	
+	
+	
+    <div class="item" style="position: relative;">
+      <a href="https://www.lightscanada.ca/all-products?brand_name=304">
+        <img src="{{media url="wysiwyg/Home_Banners/June_2018/DAINOLITE_June_2018_Sale.png"}}" alt=""/>
+      </a>
+    </div>
+    <div class="item" style="position: relative;">
+      <a href="https://www.lightscanada.ca/all-products?brand_name=311">
+        <img src="{{media url="wysiwyg/Home_Banners/June_2018/ZLITE_June_2018_Sale.png"}}" alt=""/>
+     </a>
+    </div>
+-->
+       
+         
+
+            
+</div>
+<div class="container">
+
+    <div class="row dl_home_top">
+		
+			<div class="col-xs-4">
+				<div class="dl_home_top_row">
+					NO HIDDEN FEES
+				</div>
+				<div class="dl_home_top_row1">
+					NO DUTY, BROKERAGE FEES OR TAXES
+				</div>
+			</div>
+
+			<div class="col-xs-4">
+				<div class="dl_home_top_row">
+					WE ARE <span>CANADIAN!</span>
+				</div>
+				<div class="dl_home_top_row1">
+					100% CANADIAN OWNED AND OPERATED
+				</div>
+			</div>
+
+			<div class="col-xs-4">
+				<div class="dl_home_top_row">
+					FREE SHIPPING
+				</div>
+				<div class="dl_home_top_row1">
+					ON ORDERS OVER $49*
+				</div>
+			</div>
+			<div style="clear:both;min-height:30px;">&nbsp;</div>
+		
+	</div>
+</div>
